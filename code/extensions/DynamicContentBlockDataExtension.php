@@ -1,6 +1,6 @@
 <?php
 
-class ContentBlockDataExtension extends DataExtension
+class DynamicContentBlockDataExtension extends DataExtension
 {
     /**
      * @var array
