@@ -1,0 +1,15 @@
+---
+Name: dynamicblocksconfig
+---
+SiteTree:
+  extensions:
+    - DynamicBlocksSiteTreeDataExtension
+ContentBlock:
+  extensions:
+    - DynamicContentBlockDataExtension
+SlideshowBlock:
+  extensions:
+    - FlexSlider
+SlideImage:
+  extensions:
+    - DynamicBlocksSlideImageDataExtension

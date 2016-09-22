@@ -1,0 +1,34 @@
+{
+    "name": "dynamic/dynamic-blocks",
+    "description": "various blocks for the SilverStripe Blocks module",
+    "authors": [
+        {
+            "name": "Dynamic, Inc",
+            "email": "dev@dy.ag"
+        }
+    ],
+    "keywords": [
+        "silverstripe"
+    ],
+    "type": "silverstripe-module",
+    "license": "BSD-3-Clause",
+    "require": {
+        "silverstripe/cms": "^3.2",
+        "silverstripe/framework": "^3.2",
+        "dynamic/flexslider": "^1.0",
+        "dynamic/imageuploadfield": "^1.0",
+        "sheadawson/silverstripe-blocks": "^1.0",
+        "micschk/silverstripe-groupable-gridfield": "^0.4"
+    },
+    "require-dev": {
+        "phpunit/PHPUnit": "^3.7"
+    },
+    "config": {
+        "process-timeout": 600
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "installer-name": "dynamic-blocks"
+    }
+}
