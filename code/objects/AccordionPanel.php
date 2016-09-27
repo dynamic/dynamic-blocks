@@ -23,7 +23,7 @@ class AccordionPanel extends DataObject
     private static $db = array(
         'Title' => 'Varchar(255)',
         'Content' => 'HTMLText',
-        'SortOrder' => 'Int',
+        'Sort' => 'Int',
     );
 
     /**
@@ -37,7 +37,7 @@ class AccordionPanel extends DataObject
     /**
      * @var string
      */
-    private static $default_sort = 'SortOrder';
+    private static $default_sort = 'Sort';
 
     /**
      * @return FieldList
@@ -47,7 +47,7 @@ class AccordionPanel extends DataObject
         $fields = parent::getCMSFields();
 
         $fields->removeByName(array(
-            'SortOrder',
+            'Sort',
             'AccordionID',
         ));
 

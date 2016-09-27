@@ -3,20 +3,14 @@
 class AccordionBlock extends Block
 {
     /**
-     * @return string
+     * @var string
      */
-    public function singular_name()
-    {
-        return _t('AccordionBlock.SINGULARNAME', 'Accordion Block');
-    }
+    private static $singular_name = 'Accordion Block';
 
     /**
-     * @return string
+     * @var string
      */
-    public function plural_name()
-    {
-        return _t('AccordionBlock.PLURALNAME', 'Accordion Blocks');
-    }
+    private static $plural_name = 'Accordion Blocks';
 
     /**
      * @var array
@@ -46,14 +40,16 @@ class AccordionBlock extends Block
         ));
 
         $config = GridFieldConfig_RecordEditor::create();
-        $config->addComponent(new GridFieldSortableRows('SortOrder'));
+        if (class_exists('GridFieldOrderableRows')) {
+            $config->addComponent(new GridFieldOrderableRows());
+        }
         $config->removeComponentsByType('GridFieldAddExistingAutocompleter');
         $config->removeComponentsByType('GridFieldDeleteAction');
         $config->addComponent(new GridFieldDeleteAction(false));
 
         if ($this->ID) {
             $fields->addFieldsToTab('Root.Panels', array(
-                GridField::create('Panels', 'Accordion Panels', $this->Panels()->sort('SortOrder'), $config),
+                GridField::create('Panels', 'Accordion Panels', $this->Panels()->sort('Sort'), $config),
             ));
         }
 

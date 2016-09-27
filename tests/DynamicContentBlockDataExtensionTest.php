@@ -1,11 +1,11 @@
 <?php
 
-class ContentBlockDataExtensionTest extends SapphireTest
+class DynamicContentBlockDataExtensionTest extends SapphireTest
 {
     /**
      * @var string
      */
-    protected static $fixture_file = 'jansa/tests/Fixtures.yml';
+    protected static $fixture_file = 'dynamic-blocks/tests/Fixtures.yml';
 
     /**
      *
@@ -14,7 +14,7 @@ class ContentBlockDataExtensionTest extends SapphireTest
     {
         $object = $this->objFromFixture('ContentBlock', 'one');
         $fields = $object->getCMSFields();
-        $extension = new ContentBlockDataExtension();
+        $extension = new DynamicContentBlockDataExtension();
         $extension->updateCMSFields($fields);
 
         $this->assertInstanceOf('FieldList', $fields);
