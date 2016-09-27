@@ -1,0 +1,61 @@
+Group:
+  administrators:
+    Title: Administrators
+  content_authors:
+    Title: "Content Authors"
+Permission:
+  administrators:
+    Code: ADMIN
+    Type: 1
+    Group: =>Group.administrators
+Member:
+  admin:
+    FirstName: Default
+    Surname: Admin
+    Email: administrator
+    Groups: =>Group.administrators
+  author:
+    FirstName: "Content"
+    Surname: "Author"
+    Email: "content"
+    Groups: =>Group.content_authors
+  default:
+    FirstName: Default
+    Surname: Member
+    Email: member
+PromoObject:
+  one:
+    Title: "Promo One"
+  two:
+    Title: "Promo Two"
+PromoBlock:
+  one:
+    Title: "Promo Block One"
+    Promos: =>PromoObject.one,=>PromoObject.two
+ImageBlock:
+  one:
+    Title: "Image Block One"
+ContentBlock:
+  one:
+    Title: "Content Block One"
+RecentBlogPostsBlock:
+  one:
+    Title: "Recent Posts"
+SlideImage:
+  one:
+    Filename: "slide.jpg"
+AccordionPanel:
+  one:
+    Name: "Panel One"
+    Title: "Panel One"
+    Content: "<p>Hello World</p>"
+  two:
+    Name: "Panel Two"
+    Title: "Panel Two"
+    Content: "<p>How are ya?</p>"
+AccordionBlock:
+  one:
+    Title: "Accordion"
+    Headline: "Biography sub-head"
+    Content: "<p>Biography overview lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</p>"
+    Panels: =>AccordionPanel.one,=>AccordionPanel.two

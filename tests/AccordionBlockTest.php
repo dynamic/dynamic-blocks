@@ -5,7 +5,7 @@ class AccordionBlockTest extends SapphireTest
     /**
      * @var string
      */
-    protected static $fixture_file = 'jansa/tests/Fixtures.yml';
+    protected static $fixture_file = 'dynamic-blocks/tests/Fixtures.yml';
 
     /**
      *
