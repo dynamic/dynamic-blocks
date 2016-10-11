@@ -59,3 +59,6 @@ AccordionBlock:
     Headline: "Biography sub-head"
     Content: "<p>Biography overview lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</p>"
     Panels: =>AccordionPanel.one,=>AccordionPanel.two
+FormBlock:
+  one:
+    Title: "Form"
