@@ -71,6 +71,13 @@ class RecentBlogPostsBlock extends Block
         if (!class_exists('Blog')) {
             return false;
         }
+
+        // Standard mechanism for accepting permission changes from extensions
+        $extended = $this->extendedCan('canCreate', $member);
+        if ($extended !== null) {
+            return $extended;
+        }
+
         return parent::canCreate();
     }
 
@@ -83,6 +90,13 @@ class RecentBlogPostsBlock extends Block
         if (!class_exists('Blog')) {
             return false;
         }
+
+        // Standard mechanism for accepting permission changes from extensions
+        $extended = $this->extendedCan('canView', $member);
+        if ($extended !== null) {
+            return $extended;
+        }
+
         return parent::canView();
     }
 }
