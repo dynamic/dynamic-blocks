@@ -71,13 +71,6 @@ class FormBlock extends Block
         if (!class_exists('UserDefinedForm')) {
             return false;
         }
-
-        // Standard mechanism for accepting permission changes from extensions
-        $extended = $this->extendedCan('canCreate', $member);
-        if ($extended !== null) {
-            return $extended;
-        }
-
         return parent::canCreate();
     }
 
@@ -90,13 +83,6 @@ class FormBlock extends Block
         if (!class_exists('UserDefinedForm')) {
             return false;
         }
-
-        // Standard mechanism for accepting permission changes from extensions
-        $extended = $this->extendedCan('canView', $member);
-        if ($extended !== null) {
-            return $extended;
-        }
-
         return parent::canView();
     }
 }
