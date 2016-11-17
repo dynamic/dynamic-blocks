@@ -62,3 +62,6 @@ AccordionBlock:
 FormBlock:
   one:
     Title: "Form"
+VideoBlock:
+  one:
+    Title: "Video One"
