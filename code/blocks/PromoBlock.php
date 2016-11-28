@@ -41,6 +41,10 @@ class PromoBlock extends Block
     {
         $fields = parent::getCMSFields();
 
+        $fields->removeByName(array(
+            'Promos',
+        ));
+
         if ($this->ID) {
             $config = GridFieldConfig_RelationEditor::create();
             if (class_exists('GridFieldSortableRows')) {
