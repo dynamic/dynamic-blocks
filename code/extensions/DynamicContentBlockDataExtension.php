@@ -14,6 +14,7 @@ class DynamicContentBlockDataExtension extends DataExtension
      */
     private static $has_one = array(
         'Image' => 'Image',
+        'Link' => 'Link',
     );
 
     /**
@@ -24,6 +25,12 @@ class DynamicContentBlockDataExtension extends DataExtension
         $image = ImageUploadField::create('Image')
             ->setFolderName('Uploads/Blocks/Content');
         $fields->insertBefore($image, 'Content');
+
+        $fields->addFieldToTab(
+            'Root.Main',
+            LinkField::create('LinkID', 'Link'),
+            'Content'
+        );
 
         $fields->insertAfter(TextField::create('SubTitle'), 'Title');
     }
