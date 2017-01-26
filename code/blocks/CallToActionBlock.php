@@ -24,12 +24,14 @@ class CallToActionBlock extends Block
      */
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
+        $this->beforeUpdateCMSFields(function ($fields) {
+            $fields->addFieldToTab(
+                'Root.Main',
+                LinkField::create('LinkID', 'Link')
+            );
+        });
 
-        $fields->addFieldToTab(
-            'Root.Main',
-            LinkField::create('LinkID', 'Link')
-        );
+        $fields = parent::getCMSFields();
 
         return $fields;
     }

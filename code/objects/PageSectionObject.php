@@ -38,6 +38,7 @@ class PageSectionObject extends DataObject
     private static $has_one = array(
         'Image' => 'Image',
         'PageSectionBlock' => 'PageSectionBlock',
+        'Link' => 'Link',
     );
 
     /**
@@ -67,6 +68,14 @@ class PageSectionObject extends DataObject
      */
     public function getCMSFields()
     {
+        $this->beforeUpdateCMSFields(function ($fields) {
+            $fields->addFieldToTab(
+                'Root.Main',
+                LinkField::create('LinkID', 'Link'),
+                'Content'
+            );
+        });
+
         $fields = parent::getCMSFields();
 
         $fields->removeByName(array(
