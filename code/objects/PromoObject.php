@@ -26,6 +26,7 @@ class PromoObject extends DataObject
      */
     private static $has_one = array(
         'Image' => 'Image',
+        'Link' => 'Link',
     );
 
     /**
@@ -59,6 +60,14 @@ class PromoObject extends DataObject
 
     public function getCMSFields()
     {
+        $this->beforeUpdateCMSFields(function ($fields) {
+            $fields->addFieldToTab(
+                'Root.Main',
+                LinkField::create('LinkID', 'Link'),
+                'Content'
+            );
+        });
+
         $fields = parent::getCMSFields();
 
         $fields->removeByName(array(
