@@ -3,12 +3,29 @@
 class SlideshowBlock extends Block
 {
     /**
-     * @var string
+     * @return string
      */
-    private static $singular_name = 'Slideshow Block';
+    public function singular_name()
+    {
+        return _t('SlideshowBlock.SINGULARNAME', 'Slideshow Block');
+    }
 
     /**
-     * @var string
+     * @return string
      */
-    private static $plural_name = 'Slideshow Blocks';
+    public function plural_name()
+    {
+        return _t('SlideshowBlock.PLURALNAME', 'Slideshow Blocks');
+    }
+}
+
+class SlideshowBlock_Controller extends Block_Controller
+{
+    /**
+     *
+     */
+    public function init()
+    {
+        $this->Data()->contentcontrollerInit();
+    }
 }
