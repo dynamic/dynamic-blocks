@@ -32,12 +32,20 @@ class AccordionPanel extends DataObject
     private static $has_one = array(
         'Accordion' => 'AccordionBlock',
         'Image' => 'Image',
+        'BlockLink' => 'Link',
     );
 
     /**
      * @var string
      */
     private static $default_sort = 'Sort';
+
+    /**
+     * @var array
+     */
+    private static $extensions = [
+        'VersionedDataObject'
+    ];
 
     /**
      * @return FieldList
@@ -56,6 +64,12 @@ class AccordionPanel extends DataObject
             ImageUploadField::create('Image')
                 ->setFolderName('Uploads/Elements/Accordions'),
             'Content'
+        );
+
+        $fields->addFieldToTab(
+            'Root.Main',
+            LinkField::create('BlockLinkID', 'Link'),
+            'Image'
         );
 
         return $fields;

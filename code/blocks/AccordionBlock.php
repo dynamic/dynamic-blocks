@@ -55,4 +55,48 @@ class AccordionBlock extends Block
 
         return $fields;
     }
+
+    /**
+     * @return DataList
+     */
+    public function getPanelList()
+    {
+        if ($this->Panels()->exists()) {
+            return $this->Panels()->sort('Sort');
+        }
+        return $this->Panels();
+    }
+}
+
+class AccordionBlock_Controller extends Block_Controller
+{
+    /**
+     * @var string
+     */
+    private static $accordion_class = 'accordion-block';
+
+    /**
+     *
+     */
+    public function init()
+    {
+        $class = $this->AccordionClass();
+        Requirements::javascript(THIRDPARTY_DIR . '/jquery-ui/jquery-ui.js');
+        Requirements::customScript('
+            $(function() {
+                $( ".' . $class . '" ).accordion({
+                    header: ".accord-header",
+                    collapsible: true, heightStyle: "content"
+                });
+            });
+        ');
+    }
+
+    /**
+     * @return array
+     */
+    public function AccordionClass()
+    {
+        return Config::inst()->get('AccordionBlock_Controller', 'accordion_class');
+    }
 }

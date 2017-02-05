@@ -1,4 +1,4 @@
-<?php
+1`<?php
 
 class AccordionBlockTest extends SapphireTest
 {
@@ -16,5 +16,28 @@ class AccordionBlockTest extends SapphireTest
         $fields = $object->getCMSFields();
         $this->assertInstanceOf('FieldList', $fields);
         $this->assertNotNull($fields->dataFieldByName('Panels'));
+    }
+
+    /**
+     *
+     */
+    public function testGetPanelList()
+    {
+        $object = $this->objFromFixture('AccordionBlock', 'one');
+        $panels = $object->Panels()->sort('Sort');
+        $this->assertEquals($panels, $object->getPanelList());
+    }
+}
+
+class AccordionBlock_ControllerTest extends FunctionalTest
+{
+    /**
+     *
+     */
+    public function testAccordionClass()
+    {
+        $object = AccordionBlock_Controller::create();
+        $expected = Config::inst()->get('AccordionBlock_Controller', 'accordion_class');
+        $this->assertEquals($object->AccordionClass(), $expected);
     }
 }
