@@ -91,3 +91,6 @@ PhotoGalleryBlockImage:
     Title: "Photo One"
   two:
     Title: "Photo Two"
+CustomerServiceBlock:
+  one:
+    Title: 'Our Location'

@@ -16,3 +16,7 @@ SlideImage:
 Link:
   templates:
     button: 'Display link as a button'
+CustomerServiceBlock:
+  extensions:
+    - Addressable
+    - Geocodable
