@@ -3,14 +3,20 @@
 class CallToActionBlock extends Block
 {
     /**
-     * @var string
+     * @return string
      */
-    private static $singular_name = 'Call To Action Block';
+    public function singular_name()
+    {
+        return _t('CallToActionBlock.SINGULARNAME', 'Call To Action Block');
+    }
 
     /**
-     * @var string
+     * @return string
      */
-    private static $plural_name = 'Call To Action Blocks';
+    public function plural_name()
+    {
+        return _t('CallToActionBlock.PLURALNAME', 'Call To Action Blocks');
+    }
 
     /**
      * @var array
