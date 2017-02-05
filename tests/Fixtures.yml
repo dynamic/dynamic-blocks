@@ -77,3 +77,9 @@ PageSectionObject:
 PageSectionBlock:
   one:
     Sections: =>PageSectionObject.one,=>PageSectionObject.two
+Link:
+  one:
+    Title: 'Link One'
+CallToActionBlock:
+  one:
+    LinkID: =>Link.one

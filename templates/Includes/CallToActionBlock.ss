@@ -1,3 +1,5 @@
 <div class="$CSSClasses">
-	<h4><a href="$Link" title="$Title.XML" class="btn btn-primary" role="button">$Title</a></h4>
+	<% if $BlockLink %>
+        <h4>$BlockLink</h4>
+	<% end_if %>
 </div>

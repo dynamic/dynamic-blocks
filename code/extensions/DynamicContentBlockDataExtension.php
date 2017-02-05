@@ -14,7 +14,7 @@ class DynamicContentBlockDataExtension extends DataExtension
      */
     private static $has_one = array(
         'Image' => 'Image',
-        'Link' => 'Link',
+        'BlockLink' => 'Link',
     );
 
     /**
@@ -28,8 +28,8 @@ class DynamicContentBlockDataExtension extends DataExtension
 
         $fields->addFieldToTab(
             'Root.Main',
-            LinkField::create('LinkID', 'Link'),
-            'Content'
+            LinkField::create('BlockLinkID', 'Link'),
+            'Image'
         );
 
         $fields->insertAfter(TextField::create('SubTitle'), 'Title');

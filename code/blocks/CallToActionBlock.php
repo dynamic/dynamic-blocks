@@ -16,7 +16,7 @@ class CallToActionBlock extends Block
      * @var array
      */
     private static $has_one = [
-        'Link' => 'Link',
+        'BlockLink' => 'Link',
     ];
 
     /**
@@ -27,12 +27,23 @@ class CallToActionBlock extends Block
         $this->beforeUpdateCMSFields(function ($fields) {
             $fields->addFieldToTab(
                 'Root.Main',
-                LinkField::create('LinkID', 'Link')
+                LinkField::create('BlockLinkID', 'Link')
             );
         });
 
         $fields = parent::getCMSFields();
 
+        $fields->removeByName([
+            'Title',
+        ]);
+
         return $fields;
+    }
+
+    public function getTitle()
+    {
+        if ($this->BlockLink()) {
+            return $this->BlockLink()->Title;
+        }
     }
 }

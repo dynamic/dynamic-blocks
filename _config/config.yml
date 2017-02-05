@@ -13,3 +13,6 @@ SlideshowBlock:
 SlideImage:
   extensions:
     - DynamicBlocksSlideImageDataExtension
+Link:
+  templates:
+    button: 'Display link as a button'
