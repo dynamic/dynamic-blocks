@@ -10,6 +10,15 @@ class AccordionBlockTest extends SapphireTest
     /**
      *
      */
+    public function testGetPluralName()
+    {
+        $object = singleton('AccordionBlock');
+        $this->assertEquals('Accordion Blocks', $object->plural_name());
+    }
+
+    /**
+     *
+     */
     public function testGetCMSFields()
     {
         $object = $this->objFromFixture('AccordionBlock', 'one');
@@ -36,7 +45,7 @@ class AccordionBlock_ControllerTest extends FunctionalTest
      */
     public function testAccordionClass()
     {
-        $object = AccordionBlock_Controller::create();
+        $object = singleton('AccordionBlock_Controller');
         $expected = Config::inst()->get('AccordionBlock_Controller', 'accordion_class');
         $this->assertEquals($object->AccordionClass(), $expected);
     }

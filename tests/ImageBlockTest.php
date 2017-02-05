@@ -10,6 +10,15 @@ class ImageBlockTest extends SapphireTest
     /**
      *
      */
+    public function testGetPluralName()
+    {
+        $object = singleton('ImageBlock');
+        $this->assertEquals('Image Blocks', $object->plural_name());
+    }
+
+    /**
+     *
+     */
     public function testGetCMSFields()
     {
         $object = singleton('ImageBlock');

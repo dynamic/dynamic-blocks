@@ -10,6 +10,15 @@ class PromoBlockTest extends SapphireTest
     /**
      *
      */
+    public function testGetPluralName()
+    {
+        $object = singleton('PromoBlock');
+        $this->assertEquals('Promos Blocks', $object->plural_name());
+    }
+
+    /**
+     *
+     */
     public function testGetCMSFields()
     {
         $object = singleton('PromoBlock');
