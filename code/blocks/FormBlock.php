@@ -1,5 +1,9 @@
 <?php
 
+if (!class_exists('UserDefinedForm')) {
+    return;
+}
+
 class FormBlock extends Block
 {
     /**

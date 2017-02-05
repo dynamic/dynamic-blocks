@@ -46,6 +46,9 @@ class CallToActionBlock extends Block
         return $fields;
     }
 
+    /**
+     * @return mixed
+     */
     public function getTitle()
     {
         if ($this->BlockLink()) {

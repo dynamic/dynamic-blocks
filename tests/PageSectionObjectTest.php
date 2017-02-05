@@ -1,6 +1,6 @@
 <?php
 
-class PromoObjectTest extends SapphireTest
+class PageSectionObjectTest extends SapphireTest
 {
     /**
      * @var string
@@ -12,7 +12,7 @@ class PromoObjectTest extends SapphireTest
      */
     public function testGetCMSFields()
     {
-        $object = $this->objFromFixture('PromoObject', 'one');
+        $object = $this->objFromFixture('PageSectionObject', 'one');
         $fields = $object->getCMSFields();
         $this->assertInstanceOf('FieldList', $fields);
         $this->assertNotNull($fields->dataFieldByName('BlockLinkID'));
@@ -23,7 +23,7 @@ class PromoObjectTest extends SapphireTest
      */
     public function testValidateName()
     {
-        $object = $this->objFromFixture('PromoObject', 'one');
+        $object = $this->objFromFixture('PageSectionObject', 'one');
         $object->Name = '';
         $this->setExpectedException('ValidationException');
         $object->write();
@@ -34,7 +34,7 @@ class PromoObjectTest extends SapphireTest
      */
     public function testCanView()
     {
-        $object = $this->objFromFixture('PromoObject', 'one');
+        $object = $this->objFromFixture('PageSectionObject', 'one');
         $admin = $this->objFromFixture('Member', 'admin');
         $this->assertTrue($object->canView($admin));
         $member = $this->objFromFixture('Member', 'default');
@@ -46,7 +46,7 @@ class PromoObjectTest extends SapphireTest
      */
     public function testCanEdit()
     {
-        $object = $this->objFromFixture('PromoObject', 'one');
+        $object = $this->objFromFixture('PageSectionObject', 'one');
         $admin = $this->objFromFixture('Member', 'admin');
         $this->assertTrue($object->canEdit($admin));
         $member = $this->objFromFixture('Member', 'default');
@@ -58,7 +58,7 @@ class PromoObjectTest extends SapphireTest
      */
     public function testCanDelete()
     {
-        $object = $this->objFromFixture('PromoObject', 'one');
+        $object = $this->objFromFixture('PageSectionObject', 'one');
         $admin = $this->objFromFixture('Member', 'admin');
         $this->assertTrue($object->canDelete($admin));
         $member = $this->objFromFixture('Member', 'default');
@@ -70,7 +70,7 @@ class PromoObjectTest extends SapphireTest
      */
     public function testCanCreate()
     {
-        $object = $this->objFromFixture('PromoObject', 'one');
+        $object = $this->objFromFixture('PageSectionObject', 'one');
         $admin = $this->objFromFixture('Member', 'admin');
         $this->assertTrue($object->canCreate($admin));
         $member = $this->objFromFixture('Member', 'default');
