@@ -1,10 +1,11 @@
 {
   "name": "dynamic/dynamic-blocks",
-  "description": "various blocks for the SilverStripe Blocks module",
+  "description": "A collection of blocks for the SilverStripe Blocks module.",
   "authors": [
     {
-      "name": "Dynamic, Inc",
-      "email": "dev@dy.ag"
+      "name": "Dynamic",
+      "email": "dev@dynamicagency.com",
+      "homepage": "http://www.dynamicagency.com"
     }
   ],
   "keywords": [
