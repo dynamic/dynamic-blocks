@@ -17,13 +17,14 @@
     "silverstripe/framework": "^3.2",
     "dynamic/flexslider": "^1.0",
     "dynamic/imageuploadfield": "^1.0",
-    "sheadawson/silverstripe-blocks": "^1.0",
-    "micschk/silverstripe-groupable-gridfield": "^0.4",
-    "sheadawson/quickaddnew": "^1.1",
     "muskie9/youtube-integration": "^1.0",
+    "sheadawson/silverstripe-blocks": "^1.0",
+    "sheadawson/quickaddnew": "^1.1",
     "sheadawson/silverstripe-linkable": "^1.3",
+    "micschk/silverstripe-groupable-gridfield": "^0.4",
     "heyday/silverstripe-versioneddataobjects": "^1.4",
-    "silverstripe-australia/gridfieldextensions": "^1.4"
+    "silverstripe-australia/gridfieldextensions": "^1.4",
+    "silverstripe-australia/addressable": "^1.2."
   },
   "require-dev": {
     "phpunit/PHPUnit": "^3.7"
