@@ -38,7 +38,9 @@ class FormBlock extends Block
                 'FormID',
                 'Form',
                 UserDefinedForm::get()->map()
-            )->setEmptyString(''));
+                )->setEmptyString('')
+                ->setDescription('select an existing User Defined Form to display')
+            );
         }
 
         $fields->addFieldToTab('Root.Main', HtmlEditorField::create('Content'));
