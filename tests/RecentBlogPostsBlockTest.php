@@ -1,5 +1,9 @@
 <?php
 
+if (!class_exists('Blog')) {
+    return;
+}
+
 class RecentBlogPostsBlockTest extends SapphireTest
 {
     /**
@@ -25,9 +29,14 @@ class RecentBlogPostsBlockTest extends SapphireTest
     {
         $object = $this->objFromFixture('RecentBlogPostsBlock', 'one');
         $admin = $this->objFromFixture('Member', 'admin');
-        $this->assertFalse($object->canView($admin));
         $member = $this->objFromFixture('Member', 'default');
-        $this->assertFalse($object->canView($member));
+        if (class_exists('Blog')) {
+            $this->assertTrue($object->canView($admin));
+            $this->assertTrue($object->canView($member));
+        } else {
+            $this->assertFalse($object->canView($admin));
+            $this->assertFalse($object->canView($member));
+        }
     }
 
     /**
@@ -37,8 +46,13 @@ class RecentBlogPostsBlockTest extends SapphireTest
     {
         $object = $this->objFromFixture('RecentBlogPostsBlock', 'one');
         $admin = $this->objFromFixture('Member', 'admin');
-        $this->assertFalse($object->canCreate($admin));
         $member = $this->objFromFixture('Member', 'default');
-        $this->assertFalse($object->canCreate($member));
+        if (class_exists('Blog')) {
+            $this->assertTrue($object->canCreate($admin));
+            $this->assertTrue($object->canCreate($member));
+        } else {
+            $this->assertFalse($object->canCreate($admin));
+            $this->assertFalse($object->canCreate($member));
+        }
     }
 }
