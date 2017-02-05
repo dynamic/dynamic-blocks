@@ -40,9 +40,7 @@ class PageSectionBlock extends Block
         if ($this->ID) {
             // Sections
             $config = GridFieldConfig_RecordEditor::create();
-            if (class_exists('GridFieldOrderableRows')) {
-                $config->addComponent(new GridFieldOrderableRows('SortOrder'));
-            }
+            $config->addComponent(new GridFieldOrderableRows('SortOrder'));
             $config->removeComponentsByType('GridFieldAddExistingAutocompleter');
             $config->removeComponentsByType('GridFieldDeleteAction');
             $config->addComponent(new GridFieldDeleteAction(false));
