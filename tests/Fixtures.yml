@@ -97,3 +97,6 @@ CustomerServiceBlock:
 EmailSignupBlock:
   one:
     Title: 'Signup for our newsletter'
+EmbedBlock:
+  one:
+    Title: 'Embed Block one'
