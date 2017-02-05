@@ -83,3 +83,11 @@ Link:
 CallToActionBlock:
   one:
     LinkID: =>Link.one
+PhotoGalleryBlock:
+  one:
+    Title: "Photo Gallery Block"
+PhotoGalleryBlockImage:
+  one:
+    Title: "Photo One"
+  two:
+    Title: "Photo Two"
