@@ -26,7 +26,14 @@ class PromoObject extends DataObject
      */
     private static $has_one = array(
         'Image' => 'Image',
-        'Link' => 'Link',
+        'BlockLink' => 'Link',
+    );
+
+    /**
+     * @var array
+     */
+    private static $belongs_many_many = array(
+        'PromoBlocks' => 'PromoBlock'
     );
 
     /**
@@ -54,16 +61,19 @@ class PromoObject extends DataObject
     /**
      * @var array
      */
-    private static $belongs_many_many = array(
-        'PromoBlocks' => 'PromoBlock'
-    );
+    private static $extensions = [
+        'VersionedDataObject',
+    ];
 
+    /**
+     * @return FieldList
+     */
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function ($fields) {
             $fields->addFieldToTab(
                 'Root.Main',
-                LinkField::create('LinkID', 'Link'),
+                LinkField::create('BlockLinkID', 'Link'),
                 'Content'
             );
         });

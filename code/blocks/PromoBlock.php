@@ -7,7 +7,7 @@ class PromoBlock extends Block
      */
     public function singular_name()
     {
-        return _t('PromoBlock.SINGULARNAME', 'Promo Block');
+        return _t('PromoBlock.SINGULARNAME', 'Promos Block');
     }
 
     /**
@@ -15,7 +15,7 @@ class PromoBlock extends Block
      */
     public function plural_name()
     {
-        return _t('PromoBlock.PLURALNAME', 'Promo Blocks');
+        return _t('PromoBlock.PLURALNAME', 'Promos Blocks');
     }
 
     /**
@@ -47,17 +47,13 @@ class PromoBlock extends Block
 
         if ($this->ID) {
             $config = GridFieldConfig_RelationEditor::create();
-            if (class_exists('GridFieldSortableRows')) {
-                $config->addComponent(new GridFieldSortableRows('SortOrder'));
-            }
-            if (class_exists('GridFieldAddExistingSearchButton')) {
-                $config->removeComponentsByType('GridFieldAddExistingAutocompleter');
-                $config->addComponent(new GridFieldAddExistingSearchButton());
-            }
+            $config->addComponent(new GridFieldOrderableRows('SortOrder'));
+            $config->removeComponentsByType('GridFieldAddExistingAutocompleter');
+            $config->addComponent(new GridFieldAddExistingSearchButton());
             $promos = $this->Promos()->sort('SortOrder');
             $promoField = GridField::create('Promos', 'Promos', $promos, $config);
 
-            $fields->addFieldsToTab('Root.Main', array(
+            $fields->addFieldsToTab('Root.Promos', array(
                 $promoField,
             ));
         }
