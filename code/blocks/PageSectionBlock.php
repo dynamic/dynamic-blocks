@@ -7,16 +7,21 @@
  */
 class PageSectionBlock extends Block
 {
+    /**
+     * @return string
+     */
+    public function singular_name()
+    {
+        return _t('PageSectionBlock.SINGULARNAME', 'Page Sections Block');
+    }
 
     /**
-     * @var string
+     * @return string
      */
-    private static $singular_name = 'Page Section Block';
-
-    /**
-     * @var string
-     */
-    private static $plural_name = 'Page Section Blocks';
+    public function plural_name()
+    {
+        return _t('PageSectionBlock.PLURALNAME', 'Page Sections Blocks');
+    }
 
     /**
      * @var array
@@ -35,8 +40,8 @@ class PageSectionBlock extends Block
         if ($this->ID) {
             // Sections
             $config = GridFieldConfig_RecordEditor::create();
-            if (class_exists('GridFieldSortableRows')) {
-                $config->addComponent(new GridFieldSortableRows('SortOrder'));
+            if (class_exists('GridFieldOrderableRows')) {
+                $config->addComponent(new GridFieldOrderableRows('SortOrder'));
             }
             $config->removeComponentsByType('GridFieldAddExistingAutocompleter');
             $config->removeComponentsByType('GridFieldDeleteAction');

@@ -38,7 +38,7 @@ class PageSectionObject extends DataObject
     private static $has_one = array(
         'Image' => 'Image',
         'PageSectionBlock' => 'PageSectionBlock',
-        'Link' => 'Link',
+        'BlockLink' => 'Link',
     );
 
     /**
@@ -63,6 +63,10 @@ class PageSectionObject extends DataObject
         'Title' => 'Title',
     );
 
+    private static $extensions = [
+        'VersionedDataObject'
+    ];
+
     /**
      * @return FieldList
      */
@@ -71,7 +75,7 @@ class PageSectionObject extends DataObject
         $this->beforeUpdateCMSFields(function ($fields) {
             $fields->addFieldToTab(
                 'Root.Main',
-                LinkField::create('LinkID', 'Link'),
+                LinkField::create('BlockLinkID', 'Link'),
                 'Content'
             );
         });

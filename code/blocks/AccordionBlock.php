@@ -3,14 +3,20 @@
 class AccordionBlock extends Block
 {
     /**
-     * @var string
+     * @return string
      */
-    private static $singular_name = 'Accordion Block';
+    public function singular_name()
+    {
+        return _t('AccordionBlock.SINGULARNAME', 'Accordion Block');
+    }
 
     /**
-     * @var string
+     * @return string
      */
-    private static $plural_name = 'Accordion Blocks';
+    public function plural_name()
+    {
+        return _t('AccordionBlock.PLURALNAME', 'Accordion Blocks');
+    }
 
     /**
      * @var array
