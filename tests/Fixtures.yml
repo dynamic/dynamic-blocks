@@ -94,3 +94,6 @@ PhotoGalleryBlockImage:
 CustomerServiceBlock:
   one:
     Title: 'Our Location'
+EmailSignupBlock:
+  one:
+    Title: 'Signup for our newsletter'
