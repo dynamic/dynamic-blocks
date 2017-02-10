@@ -4,20 +4,42 @@
 [![Code Coverage](https://scrutinizer-ci.com/g/dynamic/dynamic-blocks/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/dynamic/dynamic-blocks/?branch=master)
 [![codecov](https://codecov.io/gh/dynamic/dynamic-blocks/branch/master/graph/badge.svg)](https://codecov.io/gh/dynamic/dynamic-blocks)
 
-various blocks for the SilverStripe Blocks module
+A collection of blocks for the SilverStripe Blocks module:
+
+* Accordion
+* Call To Action
+* Child Pages
+* Customer Service (map and contact info)
+* Email Newsletter Signup
+* Embedded Content
+* Form (requires silverstripe/userforms)
+* Image
+* Page Sections
+* Photo Gallery
+* Promos
+* Recent Blog Posts (requires silverstripe/blog)
+* Slideshow
 
 ## Requirements
 
-- SilverStripe 3.4
+- SilverStripe ^3.2
 
 ## Installation
 
-This is how you install dynamic-blocks.
+`composer require dynamic/dynamic-blocks`
 
 ## Example usage
 
-You use dynamic-blocks like this.
+Dynamic Blocks uses `micschk/silverstripe-groupable-gridfield` to enhance the CMS interface.
 
-## Documentation
+![Dynamic Blocks CMS](images/dynamic-blocks.png)
 
-See the [docs/en](docs/en/index.md) folder.
+All blocks are available in the CMS by default. To exclude certain blocks in a project, do the following in your `config.yml`:
+
+```
+BlockManager:
+  disabled_blocks:
+    - AccordionBlock
+    - ChildPagesBlock
+```
+
