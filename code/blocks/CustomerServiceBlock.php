@@ -35,18 +35,21 @@ class CustomerServiceBlock extends Block
     {
         $fields = parent::getCMSFields();
 
-        $fields->dataFieldByName('Title')
-            ->setTitle('Name');
+        $self =& $this;
 
-        $fields->replaceField('Country', CountryDropdownField::create('Country'));
+        $this->beforeUpdateCMSFields(function ($fields) use ($self) {
+            $fields->dataFieldByName('Title')
+                ->setTitle('Name');
 
-        $fields->dataFieldByName('Website')
-            ->setAttribute('placeholder', 'http://');
+            $fields->replaceField('Country', CountryDropdownField::create('Country'));
 
-        $fields->replaceField('Email', EmailField::create('Email'));
+            $website->setAttribute('placeholder', 'http://');
 
-        $fields->dataFieldByName('Suburb')
-            ->setTitle('City');
+            $fields->replaceField('Email', EmailField::create('Email'));
+
+            $fields->dataFieldByName('Suburb')
+                ->setTitle('City');
+        });
 
         return $fields;
     }
