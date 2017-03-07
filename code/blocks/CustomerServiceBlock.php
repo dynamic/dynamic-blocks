@@ -42,8 +42,10 @@ class CustomerServiceBlock extends Block
                 ->setTitle('Name');
 
             $fields->replaceField('Country', CountryDropdownField::create('Country'));
-
-            $website->setAttribute('placeholder', 'http://');
+            
+            if ($website = $fields->dataFieldByName('Website')) {
+                $website->setAttribute('placeholder', 'http://');
+            }
 
             $fields->replaceField('Email', EmailField::create('Email'));
 
