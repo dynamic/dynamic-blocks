@@ -40,18 +40,18 @@ class CustomerServiceBlock extends Block
         $this->beforeUpdateCMSFields(function ($fields) use ($self) {
             $fields->dataFieldByName('Title')
                 ->setTitle('Name');
-
-            $fields->replaceField('Country', CountryDropdownField::create('Country'));
             
             if ($website = $fields->dataFieldByName('Website')) {
                 $website->setAttribute('placeholder', 'http://');
             }
 
             $fields->replaceField('Email', EmailField::create('Email'));
-
-            $fields->dataFieldByName('Suburb')
-                ->setTitle('City');
         });
+
+        $fields->dataFieldByName('Suburb')
+            ->setTitle('City');
+
+        $fields->replaceField('Country', CountryDropdownField::create('Country'));
 
         return $fields;
     }

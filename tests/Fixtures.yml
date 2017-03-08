@@ -62,9 +62,6 @@ AccordionBlock:
 FormBlock:
   one:
     Title: "Form"
-VideoBlock:
-  one:
-    Title: "Video One"
 PageSectionObject:
   one:
     Name: "Page Section One Name"
