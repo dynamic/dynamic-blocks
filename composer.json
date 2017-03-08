@@ -18,7 +18,6 @@
     "silverstripe/framework": "^3.2",
     "dynamic/flexslider": "^1.0",
     "dynamic/imageuploadfield": "^1.0",
-    "muskie9/youtube-integration": "^1.0",
     "sheadawson/silverstripe-blocks": "^1.0",
     "sheadawson/quickaddnew": "^1.1",
     "sheadawson/silverstripe-linkable": "^1.3",
