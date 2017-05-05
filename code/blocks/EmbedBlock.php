@@ -7,7 +7,7 @@ class EmbedBlock extends Block
      */
     public function singular_name()
     {
-        return _t('AccordionBlock.SINGULARNAME', 'Embed Block');
+        return _t('AccordionBlock.SINGULARNAME', 'oEmbed Block');
     }
 
     /**
@@ -15,7 +15,7 @@ class EmbedBlock extends Block
      */
     public function plural_name()
     {
-        return _t('AccordionBlock.PLURALNAME', 'Embed Blocks');
+        return _t('AccordionBlock.PLURALNAME', 'oEmbed Blocks');
     }
 
     /**
