@@ -97,3 +97,7 @@ EmailSignupBlock:
 EmbedBlock:
   one:
     Title: 'Embed Block one'
+EmbedCodeBlock:
+  one:
+    Title: 'Embed Code Block one'
+    Code: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/core.js'
