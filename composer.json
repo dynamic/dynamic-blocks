@@ -14,11 +14,10 @@
   "type": "silverstripe-module",
   "license": "BSD-3-Clause",
   "require": {
-    "silverstripe/cms": "^3.2",
-    "silverstripe/framework": "^3.2",
-    "dynamic/flexslider": "^1.0",
-    "dynamic/imageuploadfield": "^1.0",
-    "sheadawson/silverstripe-blocks": "^1.0",
+    "silverstripe/cms": "^4.0",
+    "silverstripe/framework": "^4.0",
+    "dynamic/flexslider": "silverstripe-4-test-dev",
+    "sheadawson/silverstripe-blocks": "dev-master",
     "sheadawson/quickaddnew": "^1.1",
     "sheadawson/silverstripe-linkable": "^1.3",
     "micschk/silverstripe-groupable-gridfield": "^0.4",
@@ -37,7 +36,7 @@
   "extra": {
     "installer-name": "dynamic-blocks",
     "branch-alias": {
-      "dev-master": "1.0.x-dev"
+      "dev-master": "2.0.x-dev"
     }
   }
 }
