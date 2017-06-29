@@ -44,7 +44,7 @@ class AccordionPanel extends DataObject
      * @var array
      */
     private static $extensions = [
-        'VersionedDataObject'
+	    'Heyday\VersionedDataObjects\VersionedDataObject',
     ];
 
     /**
