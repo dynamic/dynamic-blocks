@@ -16,7 +16,7 @@
   "require": {
     "silverstripe/cms": "^3.2",
     "silverstripe/framework": "^3.2",
-    "dynamic/flexslider": "^1.0",
+    "dynamic/flexslider": "^2.0",
     "dynamic/imageuploadfield": "^1.0",
     "sheadawson/silverstripe-blocks": "^1.0",
     "sheadawson/quickaddnew": "^1.1",
