@@ -59,6 +59,8 @@ class RecentBlogPostsBlock extends Block
             );
         }
 
+        $this->extend('updateCMSFields', $fields);
+
         return $fields;
     }
 
