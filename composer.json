@@ -13,17 +13,16 @@
   ],
   "type": "silverstripe-module",
   "license": "BSD-3-Clause",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:jsirish/silverstripe-flexslider.git"
+    }
+  ],
   "require": {
     "silverstripe/cms": "^4.0",
     "silverstripe/framework": "^4.0",
-    "dynamic/flexslider": "silverstripe-4-test-dev",
-    "sheadawson/silverstripe-blocks": "dev-master",
-    "sheadawson/quickaddnew": "^1.1",
-    "sheadawson/silverstripe-linkable": "^1.3",
-    "micschk/silverstripe-groupable-gridfield": "^0.4",
-    "heyday/silverstripe-versioneddataobjects": "^1.4",
-    "silverstripe-australia/gridfieldextensions": "^1.4",
-    "silverstripe-australia/addressable": "^1.1"
+    "sheadawson/silverstripe-blocks": "dev-master"
   },
   "require-dev": {
     "phpunit/PHPUnit": "^3.7"
