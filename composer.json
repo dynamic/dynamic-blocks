@@ -13,12 +13,6 @@
   ],
   "type": "silverstripe-module",
   "license": "BSD-3-Clause",
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "git@github.com:jsirish/silverstripe-flexslider.git"
-    }
-  ],
   "require": {
     "silverstripe/cms": "^4.0",
     "silverstripe/framework": "^4.0",
