@@ -1,5 +1,13 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Model;
+
+use Dynamic\DynamicBlocks\Block\PromoBlock;
+use SilverStripe\Assets\Image;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordViewer;
+use SilverStripe\ORM\DataObject;
+
 class PromoObject extends DataObject
 {
     /**
@@ -25,16 +33,21 @@ class PromoObject extends DataObject
      * @var array
      */
     private static $has_one = array(
-        'Image' => 'Image',
-        'BlockLink' => 'Link',
+        'Image' => Image::class,
+        //'BlockLink' => 'Link', // todo readd once Linkable is SS4 compatible
     );
 
     /**
      * @var array
      */
     private static $belongs_many_many = array(
-        'PromoBlocks' => 'PromoBlock'
+        'PromoBlocks' => PromoBlock::class,
     );
+
+    /**
+     * @var string
+     */
+    private static $table_name = 'PromoObject';
 
     /**
      * @var string
@@ -59,23 +72,19 @@ class PromoObject extends DataObject
     );
 
     /**
-     * @var array
-     */
-    private static $extensions = [
-        'VersionedDataObject',
-    ];
-
-    /**
-     * @return FieldList
+     * @return \SilverStripe\Forms\FieldList
      */
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function ($fields) {
+
+            /* // todo readd once Linkable is SS4 compatible
             $fields->addFieldToTab(
                 'Root.Main',
                 LinkField::create('BlockLinkID', 'Link'),
                 'Content'
             );
+            */
         });
 
         $fields = parent::getCMSFields();
@@ -97,14 +106,14 @@ class PromoObject extends DataObject
     }
 
     /**
-     * @return ValidationResult
+     * @return \SilverStripe\ORM\ValidationResult
      */
     public function validate()
     {
         $result = parent::validate();
 
         if (!$this->Name) {
-            $result->error('Name is requied before you can save');
+            $result->addError('Name is requied before you can save');
         }
 
         return $result;
@@ -120,7 +129,7 @@ class PromoObject extends DataObject
      *
      * @return bool
      */
-    public function canCreate($member = null)
+    public function canCreate($member = null, $context = [])
     {
         return true;
     }
@@ -130,7 +139,7 @@ class PromoObject extends DataObject
      *
      * @return bool
      */
-    public function canView($member = null)
+    public function canView($member = null, $context = [])
     {
         return true;
     }
@@ -140,7 +149,7 @@ class PromoObject extends DataObject
      *
      * @return bool
      */
-    public function canEdit($member = null)
+    public function canEdit($member = null, $context = [])
     {
         return true;
     }
@@ -150,7 +159,7 @@ class PromoObject extends DataObject
      *
      * @return bool
      */
-    public function canDelete($member = null)
+    public function canDelete($member = null, $context = [])
     {
         return true;
     }

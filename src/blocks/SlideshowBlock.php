@@ -1,5 +1,10 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Block;
+
+use SheaDawson\Blocks\Controllers\BlockController;
+use SheaDawson\Blocks\Model\Block;
+
 class SlideshowBlock extends Block
 {
     /**
@@ -17,15 +22,9 @@ class SlideshowBlock extends Block
     {
         return _t('SlideshowBlock.PLURALNAME', 'Slideshow Blocks');
     }
-}
 
-class SlideshowBlock_Controller extends Block_Controller
-{
     /**
-     *
+     * @var string
      */
-    public function init()
-    {
-        $this->Data()->contentcontrollerInit();
-    }
+    private static $table_name = 'SlideshowBlock';
 }

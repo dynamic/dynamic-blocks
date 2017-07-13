@@ -1,5 +1,10 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Block;
+
+use SheaDawson\Blocks\Model\Block;
+use SilverStripe\Forms\EmailField;
+
 class CustomerServiceBlock extends Block
 {
     /**
@@ -29,6 +34,11 @@ class CustomerServiceBlock extends Block
     );
 
     /**
+     * @var string
+     */
+    private static $table_name = 'CustomerServiceBlock';
+
+    /**
      * @return FieldList
      */
     public function getCMSFields()
@@ -48,10 +58,7 @@ class CustomerServiceBlock extends Block
             $fields->replaceField('Email', EmailField::create('Email'));
         });
 
-        $fields->dataFieldByName('Suburb')
-            ->setTitle('City');
-
-        $fields->replaceField('Country', CountryDropdownField::create('Country'));
+        //$fields->replaceField('Country', CountryDropdownField::create('Country'));
 
         return $fields;
     }

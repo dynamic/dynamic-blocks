@@ -1,5 +1,14 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Block;
+
+use Dynamic\DynamicBlocks\Model\PromoObject;
+use SheaDawson\Blocks\Model\Block;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
+use Symbiote\GridFieldExtensions\GridFieldAddExistingSearchButton;
+use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
+
 class PromoBlock extends Block
 {
     /**
@@ -22,7 +31,7 @@ class PromoBlock extends Block
      * @var array
      */
     private static $many_many = array(
-        'Promos' => 'PromoObject',
+        'Promos' => PromoObject::class,
     );
 
     /**
@@ -33,6 +42,11 @@ class PromoBlock extends Block
             'SortOrder' => 'Int',
         ),
     );
+
+    /**
+     * @var string
+     */
+    private static $table_name = 'PromoBlock';
 
     /**
      * @return FieldList

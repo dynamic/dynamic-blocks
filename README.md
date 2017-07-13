@@ -22,7 +22,7 @@ A collection of blocks for the SilverStripe Blocks module:
 
 ## Requirements
 
-- SilverStripe ^3.2
+- SilverStripe ^4.0
 
 ## Installation
 

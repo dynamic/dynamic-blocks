@@ -1,5 +1,13 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\ORM;
+
+use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Assets\Image;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\TextField;
+use SilverStripe\ORM\DataExtension;
+
 class DynamicContentBlockDataExtension extends DataExtension
 {
     /**
@@ -13,8 +21,8 @@ class DynamicContentBlockDataExtension extends DataExtension
      * @var array
      */
     private static $has_one = array(
-        'Image' => 'Image',
-        'BlockLink' => 'Link',
+        'Image' => Image::class,
+        //'BlockLink' => 'Link', // todo readd once Linkable is SS4 compatible
     );
 
     /**
@@ -22,15 +30,18 @@ class DynamicContentBlockDataExtension extends DataExtension
      */
     public function updateCMSFields(FieldList $fields)
     {
-        $image = ImageUploadField::create('Image')
-            ->setFolderName('Uploads/Blocks/Content');
+        $image = UploadField::create('Image')
+            //->setFolderName('Uploads/Blocks/Content')
+        ;
         $fields->insertBefore($image, 'Content');
 
+        /* // todo readd once Linkable is SS4 compatible
         $fields->addFieldToTab(
             'Root.Main',
             LinkField::create('BlockLinkID', 'Link'),
             'Image'
         );
+        */
 
         $fields->insertAfter(TextField::create('SubTitle'), 'Title');
     }

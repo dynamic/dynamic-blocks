@@ -1,5 +1,10 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Block;
+
+use SheaDawson\Blocks\Model\Block;
+use SilverStripe\Forms\TextareaField;
+
 class EmailSignupBlock extends Block
 {
     /**
@@ -24,6 +29,11 @@ class EmailSignupBlock extends Block
     private static $db = [
         'EmbedCode' => 'HTMLText',
     ];
+
+    /**
+     * @var string
+     */
+    private static $table_name = 'EmailSignupBlock';
 
     /**
      * @return FieldList

@@ -13,25 +13,24 @@ before_install:
 
 env:
   global:
-    - DB=MYSQL CORE_RELEASE=3.4
+    - DB=MYSQL CORE_RELEASE=4.0
     - MODULE_PATH=dynamic-blocks
     - COVERAGE=0
 
 matrix:
   include:
-    - php: 5.6
+    - php: 7.0
       env: DB=SQLITE
-    - php: 5.6
+    - php: 7.0
       env: DB=PGSQL
-    - php: 5.6
+    - php: 7.0
       env: COVERAGE=1
-    - php: 7.0
-      env: CORE_RELEASE=master
-  allow_failures:
     - php: 5.6
-      env: DB=PGSQL
+  allow_failures:
     - php: 7.0
-      env: CORE_RELEASE=master
+      env: DB=SQLITE
+    - php: 7.0
+      env: DB=PGSQL
 
 
 before_script:
@@ -40,6 +39,7 @@ before_script:
   - git clone git://github.com/silverstripe-labs/silverstripe-travis-support.git ~/travis-support
   - php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss
   - cd ~/builds/ss
+  - mv "$MODULE_PATH/phpunit.xml.dist" .
 
 script:
   # Execute tests with no coverage.  This is the fastest option

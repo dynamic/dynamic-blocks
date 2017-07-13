@@ -1,4 +1,9 @@
-1`<?php
+<?php
+
+namespace Dynamic\DynamicBlocks\Test;
+
+use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Forms\FieldList;
 
 class DynamicBlocksSiteTreeDataExtensionTest extends SapphireTest
 {
@@ -12,8 +17,8 @@ class DynamicBlocksSiteTreeDataExtensionTest extends SapphireTest
      */
     public function testGetCMSFields()
     {
-        $object = singleton('Page');
+        $object = singleton(\Page::class);
         $fields = $object->getCMSFields();
-        $this->assertInstanceOf('FieldList', $fields);
+        $this->assertInstanceOf(FieldList::class, $fields);
     }
 }

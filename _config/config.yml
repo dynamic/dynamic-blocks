@@ -1,22 +1,33 @@
 ---
 Name: dynamicblocksconfig
 ---
-SiteTree:
+SilverStripe\CMS\ModelSiteTree:
   extensions:
-    - DynamicBlocksSiteTreeDataExtension
-ContentBlock:
+    - Dynamic\DynamicBlocks\ORM\DynamicBlocksSiteTreeDataExtension
+SheaDawson\Blocks\Model\ContentBlock:
   extensions:
-    - DynamicContentBlockDataExtension
-SlideshowBlock:
+    - Dynamic\DynamicBlocks\ORM\DynamicContentBlockDataExtension
+Dynamic\DynamicBlocks\SlideshowBlock:
   extensions:
-    - FlexSlider
-SlideImage:
+    - Dynamic\FlexSlider\ORM\FlexSlider
+Dynamic\FlexSlider\Model\SlideImage:
   extensions:
-    - DynamicBlocksSlideImageDataExtension
+    - Dynamic\DynamicBlocks\ORM\DynamicBlocksSlideImageDataExtension
 Link:
   templates:
     button: 'Display link as a button'
-CustomerServiceBlock:
+Dynamic\DynamicBlocks\Model\AccordionPanel:
   extensions:
-    - Addressable
-    - Geocodable
+    - SilverStripe\Versioned\Versioned('Stage','Live')
+Dynamic\DynamicBlocks\CustomerServiceBlock:
+  extensions:
+    - Dynamic\Locator\AddressDataExtension
+Dynamic\DynamicBlocks\Model\PageSectionObject:
+  extensions:
+    - SilverStripe\Versioned\Versioned('Stage','Live')
+Dynamic\DynamicBlocks\Model\PhotoGalleryBlockImage:
+  extensions:
+    - SilverStripe\Versioned\Versioned('Stage','Live')
+Dynamic\DynamicBlocks\Model\PromoObject:
+  extensions:
+    - SilverStripe\Versioned\Versioned('Stage','Live')

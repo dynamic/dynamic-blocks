@@ -1,4 +1,13 @@
-1`<?php
+<?php
+
+namespace Dynamic\DynamicBlocks\Test;
+
+use Dynamic\DynamicBlocks\Block\AccordionBlock;
+use Dynamic\DynamicBlocks\Block\AccordionBlockController;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Dev\FunctionalTest;
+use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Forms\FieldList;
 
 class AccordionBlockTest extends SapphireTest
 {
@@ -12,7 +21,7 @@ class AccordionBlockTest extends SapphireTest
      */
     public function testGetPluralName()
     {
-        $object = singleton('AccordionBlock');
+        $object = singleton(AccordionBlock::class);
         $this->assertEquals('Accordion Blocks', $object->plural_name());
     }
 
@@ -21,9 +30,9 @@ class AccordionBlockTest extends SapphireTest
      */
     public function testGetCMSFields()
     {
-        $object = $this->objFromFixture('AccordionBlock', 'one');
+        $object = $this->objFromFixture(AccordionBlock::class, 'one');
         $fields = $object->getCMSFields();
-        $this->assertInstanceOf('FieldList', $fields);
+        $this->assertInstanceOf(FieldList::class, $fields);
         $this->assertNotNull($fields->dataFieldByName('Panels'));
     }
 
@@ -32,21 +41,21 @@ class AccordionBlockTest extends SapphireTest
      */
     public function testGetPanelList()
     {
-        $object = $this->objFromFixture('AccordionBlock', 'one');
+        $object = $this->objFromFixture(AccordionBlock::class, 'one');
         $panels = $object->Panels()->sort('Sort');
         $this->assertEquals($panels, $object->getPanelList());
     }
 }
 
-class AccordionBlock_ControllerTest extends FunctionalTest
+class AccordionBlockControllerTest extends FunctionalTest
 {
     /**
      *
      */
     public function testAccordionClass()
     {
-        $object = singleton('AccordionBlock_Controller');
-        $expected = Config::inst()->get('AccordionBlock_Controller', 'accordion_class');
+        $object = singleton(AccordionBlockController::class);
+        $expected = Config::inst()->get(AccordionBlockController::class, 'accordion_class');
         $this->assertEquals($object->AccordionClass(), $expected);
     }
 }

@@ -1,5 +1,14 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Block;
+
+use Dynamic\DynamicBlocks\Model\PageSectionObject;
+use SheaDawson\Blocks\Model\Block;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+use SilverStripe\Forms\GridField\GridFieldDeleteAction;
+use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
+
 /**
  * Class PageSectionBlock
  *
@@ -27,11 +36,16 @@ class PageSectionBlock extends Block
      * @var array
      */
     private static $has_many = [
-        'Sections' => 'PageSectionObject',
+        'Sections' => PageSectionObject::class,
     ];
 
     /**
-     * @return FieldList
+     * @var string
+     */
+    private static $table_name = 'PageSectionBlock';
+
+    /**
+     * @return \SilverStripe\Forms\FieldList
      */
     public function getCMSFields()
     {

@@ -1,4 +1,10 @@
-1`<?php
+<?php
+
+namespace Dynamic\DynamicBlocks\Test;
+
+use Dynamic\DynamicBlocks\Block\EmailSignupBlock;
+use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Forms\FieldList;
 
 class EmailSignupBlockTest extends SapphireTest
 {
@@ -12,7 +18,7 @@ class EmailSignupBlockTest extends SapphireTest
      */
     public function testGetPluralName()
     {
-        $object = singleton('EmailSignupBlock');
+        $object = singleton(EmailSignupBlock::class);
         $this->assertEquals('Email Signup Blocks', $object->plural_name());
     }
 
@@ -21,9 +27,9 @@ class EmailSignupBlockTest extends SapphireTest
      */
     public function testGetCMSFields()
     {
-        $object = $this->objFromFixture('EmailSignupBlock', 'one');
+        $object = $this->objFromFixture(EmailSignupBlock::class, 'one');
         $fields = $object->getCMSFields();
-        $this->assertInstanceOf('FieldList', $fields);
+        $this->assertInstanceOf(FieldList::class, $fields);
         $this->assertNotNull($fields->dataFieldByName('EmbedCode'));
     }
 }

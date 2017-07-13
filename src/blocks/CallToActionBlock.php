@@ -1,5 +1,9 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Block;
+
+use SheaDawson\Blocks\Model\Block;
+
 class CallToActionBlock extends Block
 {
     /**
@@ -22,8 +26,13 @@ class CallToActionBlock extends Block
      * @var array
      */
     private static $has_one = [
-        'BlockLink' => 'Link',
+        //'BlockLink' => 'Link', // todo readd once Linkable is SS4 compatible
     ];
+
+    /**
+     * @var string
+     */
+    private static $table_name = 'CallToActionBlock';
 
     /**
      * @return FieldList
@@ -31,10 +40,13 @@ class CallToActionBlock extends Block
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function ($fields) {
+
+            /* // todo readd once Linkable is SS4 compatible
             $fields->addFieldToTab(
                 'Root.Main',
                 LinkField::create('BlockLinkID', 'Link')
             );
+            */
         });
 
         $fields = parent::getCMSFields();
@@ -51,8 +63,10 @@ class CallToActionBlock extends Block
      */
     public function getTitle()
     {
+        /* // todo readd once Linkable is SS4 compatible
         if ($this->BlockLink()) {
             return $this->BlockLink()->Title;
         }
+        */
     }
 }

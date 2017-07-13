@@ -1,5 +1,11 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Test;
+
+use Dynamic\DynamicBlocks\Block\EmbedCodeBlock;
+use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Forms\FieldList;
+
 class EmbedCodeBlockTest extends SapphireTest
 {
     /**
@@ -12,7 +18,7 @@ class EmbedCodeBlockTest extends SapphireTest
      */
     public function testGetPluralName()
     {
-        $object = singleton('EmbedCodeBlock');
+        $object = singleton(EmbedCodeBlock::class);
         $this->assertEquals('Embed Code Blocks', $object->plural_name());
     }
 
@@ -21,9 +27,9 @@ class EmbedCodeBlockTest extends SapphireTest
      */
     public function testGetCMSFields()
     {
-        $object = $this->objFromFixture('EmbedCodeBlock', 'one');
+        $object = $this->objFromFixture(EmbedCodeBlock::class, 'one');
         $fields = $object->getCMSFields();
-        $this->assertInstanceOf('FieldList', $fields);
+        $this->assertInstanceOf(FieldList::class, $fields);
         $this->assertNotNull($fields->dataFieldByName('Code'));
     }
 

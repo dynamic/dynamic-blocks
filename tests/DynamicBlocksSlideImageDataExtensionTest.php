@@ -1,5 +1,11 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Test;
+
+use Dynamic\FlexSlider\Model\SlideImage;
+use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Forms\FieldList;
+
 class DynamicBlocksSlideImageDataExtensionTest extends SapphireTest
 {
     /**
@@ -12,9 +18,9 @@ class DynamicBlocksSlideImageDataExtensionTest extends SapphireTest
      */
     public function testUpdateCMSFields()
     {
-        $object = singleton('SlideImage');
+        $object = singleton(SlideImage::class);
         $fields = $object->getCMSFields();
-        $this->assertInstanceOf('FieldList', $fields);
+        $this->assertInstanceOf(FieldList::class, $fields);
         $this->assertNull($fields->dataFieldByName('SlideshowBlockID'));
     }
 }

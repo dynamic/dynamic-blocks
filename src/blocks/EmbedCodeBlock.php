@@ -1,5 +1,11 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Block;
+
+use SheaDawson\Blocks\Model\Block;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\TextareaField;
+
 /**
  * Class EmbedCodeBlock
  */
@@ -34,7 +40,12 @@ class EmbedCodeBlock extends Block
     ];
 
     /**
-     * @return \FieldList
+     * @var string
+     */
+    private static $table_name = 'EmbedCodeBlock';
+
+    /**
+     * @return FieldList
      */
     public function getCMSFields()
     {

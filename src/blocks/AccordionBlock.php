@@ -1,5 +1,16 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Block;
+
+use Dynamic\DynamicBlocks\Model\AccordionPanel;
+use SheaDawson\Blocks\Model\Block;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+use SilverStripe\Forms\GridField\GridFieldDeleteAction;
+use SilverStripe\ORM\DataList;
+use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
+
 class AccordionBlock extends Block
 {
     /**
@@ -30,8 +41,13 @@ class AccordionBlock extends Block
      * @var array
      */
     private static $has_many = array(
-        'Panels' => 'AccordionPanel',
+        'Panels' => AccordionPanel::class,
     );
+
+    /**
+     * @var string
+     */
+    private static $table_name = 'AccordionBlock';
 
     /**
      * @return FieldList
@@ -46,11 +62,11 @@ class AccordionBlock extends Block
         ));
 
         $config = GridFieldConfig_RecordEditor::create();
-        if (class_exists('GridFieldOrderableRows')) {
+        if (class_exists(GridFieldOrderableRows::class)) {
             $config->addComponent(new GridFieldOrderableRows());
         }
         $config->removeComponentsByType('GridFieldAddExistingAutocompleter');
-        $config->removeComponentsByType('GridFieldDeleteAction');
+        $config->removeComponentsByType(GridFieldDeleteAction::class);
         $config->addComponent(new GridFieldDeleteAction(false));
 
         if ($this->ID) {
@@ -71,38 +87,5 @@ class AccordionBlock extends Block
             return $this->Panels()->sort('Sort');
         }
         return $this->Panels();
-    }
-}
-
-class AccordionBlock_Controller extends Block_Controller
-{
-    /**
-     * @var string
-     */
-    private static $accordion_class = 'accordion-block';
-
-    /**
-     *
-     */
-    public function init()
-    {
-        $class = $this->AccordionClass();
-        Requirements::javascript(THIRDPARTY_DIR . '/jquery-ui/jquery-ui.js');
-        Requirements::customScript('
-            $(function() {
-                $( ".' . $class . '" ).accordion({
-                    header: ".accord-header",
-                    collapsible: true, heightStyle: "content"
-                });
-            });
-        ');
-    }
-
-    /**
-     * @return array
-     */
-    public function AccordionClass()
-    {
-        return Config::inst()->get('AccordionBlock_Controller', 'accordion_class');
     }
 }
