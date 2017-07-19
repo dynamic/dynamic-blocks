@@ -16,6 +16,7 @@ SlideImage:
 Link:
   templates:
     button: 'Display link as a button'
+    buttonghost: 'Display link as a ghost button'
 CustomerServiceBlock:
   extensions:
     - Addressable
