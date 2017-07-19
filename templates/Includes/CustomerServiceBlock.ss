@@ -1,6 +1,6 @@
 <div class="row $CSSClasses">
     <div class="col-md-4">
-		$AddressMap(300,300)
+		$AddressMap(420,420)
 	</div>
 	<div class="col-md-8">
 		<h4>$Title</h4>
