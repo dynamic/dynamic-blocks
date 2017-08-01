@@ -4,6 +4,9 @@ Name: dynamicblocksconfig
 SiteTree:
   extensions:
     - DynamicBlocksSiteTreeDataExtension
+Block:
+  extensions:
+    - DynamicBlocksBlockDataExtension
 ContentBlock:
   extensions:
     - DynamicContentBlockDataExtension
