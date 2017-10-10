@@ -22,7 +22,13 @@ class SectionNavigationBlock extends Block
     public function getSectionNavigation()
     {
         if ($page = $this->getCurrentPage()) {
-            return $page->Children() ? $page->Children() : $page->Parent()->Children();
+            if ($page->Children()->Count() > 0) {
+                return $page->Children();
+            } else if ($page->Parent()) {
+                return $page->Parent()->Children();
+            } else {
+                return false;
+            }
         }
 
         return false;
