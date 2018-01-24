@@ -18,12 +18,9 @@
     "silverstripe/framework": "^4.0",
     "dynamic/flexslider": "^3.0",
     "sheadawson/silverstripe-blocks": "^2.0",
-    "sheadawson/quickaddnew": "^1.1",
-    "sheadawson/silverstripe-linkable": "^1.3",
-    "micschk/silverstripe-groupable-gridfield": "^0.4",
-    "heyday/silverstripe-versioneddataobjects": "^1.4",
+    "sheadawson/silverstripe-linkable": "^2.0",
     "symbiote/silverstripe-gridfieldextensions": "^3.0",
-    "symbiote/silverstripe-addressable": "^1.1"
+    "dynamic/silverstripe-geocoder": "^1.0"
   },
   "require-dev": {
     "phpunit/PHPUnit": "^3.7"
