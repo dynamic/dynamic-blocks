@@ -16,14 +16,14 @@
   "require": {
     "silverstripe/cms": "^4.0",
     "silverstripe/framework": "^4.0",
-    "dynamic/flexslider": "silverstripe-4-test-dev",
-    "sheadawson/silverstripe-blocks": "dev-master",
+    "dynamic/flexslider": "^3.0",
+    "sheadawson/silverstripe-blocks": "^2.0",
     "sheadawson/quickaddnew": "^1.1",
     "sheadawson/silverstripe-linkable": "^1.3",
     "micschk/silverstripe-groupable-gridfield": "^0.4",
     "heyday/silverstripe-versioneddataobjects": "^1.4",
-    "silverstripe-australia/gridfieldextensions": "^1.4",
-    "silverstripe-australia/addressable": "^1.1"
+    "symbiote/silverstripe-gridfieldextensions": "^1.4",
+    "symbiote/silverstripe-addressable": "^1.1"
   },
   "require-dev": {
     "phpunit/PHPUnit": "^3.7"
