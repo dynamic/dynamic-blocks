@@ -1,5 +1,11 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Test;
+
+use Dynamic\DynamicBlocks\Block\PageSectionBlock;
+use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Forms\FieldList;
+
 /**
  * Class PageSectionBlockTest
  */
@@ -16,7 +22,7 @@ class PageSectionBlockTest extends SapphireTest
      */
     public function testGetPluralName()
     {
-        $object = singleton('PageSectionBlock');
+        $object = singleton(PageSectionBlock::class);
         $this->assertEquals('Page Sections Blocks', $object->plural_name());
     }
 
@@ -25,9 +31,9 @@ class PageSectionBlockTest extends SapphireTest
      */
     public function testGetCMSFields()
     {
-        $object = $this->objFromFixture('PageSectionBlock', 'one');
+        $object = $this->objFromFixture(PageSectionBlock::class, 'one');
         $fields = $object->getCMSFields();
-        $this->assertInstanceOf('FieldList', $fields);
+        $this->assertInstanceOf(FieldList::class, $fields);
         $this->assertNotNull($fields->dataFieldByName('Sections'));
     }
 
@@ -36,7 +42,7 @@ class PageSectionBlockTest extends SapphireTest
      */
     public function testGetPageSections()
     {
-        $object = $this->objFromFixture('PageSectionBlock', 'one');
+        $object = $this->objFromFixture(PageSectionBlock::class, 'one');
         $expected = $object->Sections()->sort('SortOrder');
         $this->assertEquals($expected, $object->getPageSections());
     }

@@ -1,5 +1,12 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Model;
+
+use Dynamic\DynamicBlocks\Block\AccordionBlock;
+use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Assets\Image;
+use SilverStripe\ORM\DataObject;
+
 class AccordionPanel extends DataObject
 {
     /**
@@ -30,10 +37,15 @@ class AccordionPanel extends DataObject
      * @var array
      */
     private static $has_one = array(
-        'Accordion' => 'AccordionBlock',
-        'Image' => 'Image',
-        'BlockLink' => 'Link',
+        'Accordion' => AccordionBlock::class,
+        'Image' => Image::class,
+        //'BlockLink' => 'Link', // todo readd once Linkable is SS4 compatible
     );
+
+    /**
+     * @var string
+     */
+    private static $table_name = 'AccordionPanel';
 
     /**
      * @var string
@@ -41,14 +53,7 @@ class AccordionPanel extends DataObject
     private static $default_sort = 'Sort';
 
     /**
-     * @var array
-     */
-    private static $extensions = [
-        'VersionedDataObject'
-    ];
-
-    /**
-     * @return FieldList
+     * @return \SilverStripe\Forms\FieldList
      */
     public function getCMSFields()
     {
@@ -61,29 +66,32 @@ class AccordionPanel extends DataObject
 
         $fields->addFieldToTab(
             'Root.Main',
-            ImageUploadField::create('Image')
-                ->setFolderName('Uploads/Elements/Accordions'),
+            UploadField::create('Image')
+            //    ->setFolderName('Uploads/Elements/Accordions')
+            ,
             'Content'
         );
 
+        /* // todo readd once Linkable is SS4 compatible
         $fields->addFieldToTab(
             'Root.Main',
             LinkField::create('BlockLinkID', 'Link'),
             'Image'
         );
+        */
 
         return $fields;
     }
 
     /**
-     * @return ValidationResult
+     * @return \SilverStripe\ORM\ValidationResult
      */
     public function validate()
     {
         $result = parent::validate();
 
         if (!$this->Title) {
-            $result->error('Title is required');
+            $result->addError('Title is required');
         }
 
         return $result;
@@ -91,40 +99,40 @@ class AccordionPanel extends DataObject
 
     /**
      * @param null $member
-     *
+     * @param array $context
      * @return bool
      */
-    public function canCreate($member = null)
+    public function canCreate($member = null, $context = [])
     {
         return true;
     }
 
     /**
      * @param null $member
-     *
+     * @param array $context
      * @return bool
      */
-    public function canView($member = null)
+    public function canView($member = null, $context = [])
     {
         return true;
     }
 
     /**
      * @param null $member
-     *
+     * @param array $context
      * @return bool
      */
-    public function canEdit($member = null)
+    public function canEdit($member = null, $context = [])
     {
         return true;
     }
 
     /**
      * @param null $member
-     *
+     * @param array $context
      * @return bool
      */
-    public function canDelete($member = null)
+    public function canDelete($member = null, $context = [])
     {
         return true;
     }

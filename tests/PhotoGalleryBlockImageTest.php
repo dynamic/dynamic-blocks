@@ -1,5 +1,12 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Test;
+
+use Dynamic\DynamicBlocks\Model\PhotoGalleryBlockImage;
+use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Security\Member;
+
 class PhotoGalleryBlockImageTest extends SapphireTest
 {
     /**
@@ -12,9 +19,9 @@ class PhotoGalleryBlockImageTest extends SapphireTest
      */
     public function testGetCMSFields()
     {
-        $object = $this->objFromFixture('PhotoGalleryBlockImage', 'one');
+        $object = $this->objFromFixture(PhotoGalleryBlockImage::class, 'one');
         $fields = $object->getCMSFields();
-        $this->assertInstanceOf('FieldList', $fields);
+        $this->assertInstanceOf(FieldList::class, $fields);
         $this->assertNull($fields->dataFieldByName('PhotoGalleryID'));
     }
 
@@ -23,10 +30,10 @@ class PhotoGalleryBlockImageTest extends SapphireTest
      */
     public function testCanView()
     {
-        $object = $this->objFromFixture('PhotoGalleryBlockImage', 'one');
-        $admin = $this->objFromFixture('Member', 'admin');
+        $object = $this->objFromFixture(PhotoGalleryBlockImage::class, 'one');
+        $admin = $this->objFromFixture(Member::class, 'admin');
         $this->assertTrue($object->canView($admin));
-        $member = $this->objFromFixture('Member', 'default');
+        $member = $this->objFromFixture(Member::class, 'default');
         $this->assertTrue($object->canView($member));
     }
 
@@ -35,10 +42,10 @@ class PhotoGalleryBlockImageTest extends SapphireTest
      */
     public function testCanEdit()
     {
-        $object = $this->objFromFixture('PhotoGalleryBlockImage', 'one');
-        $admin = $this->objFromFixture('Member', 'admin');
+        $object = $this->objFromFixture(PhotoGalleryBlockImage::class, 'one');
+        $admin = $this->objFromFixture(Member::class, 'admin');
         $this->assertTrue($object->canEdit($admin));
-        $member = $this->objFromFixture('Member', 'default');
+        $member = $this->objFromFixture(Member::class, 'default');
         $this->assertTrue($object->canEdit($member));
     }
 
@@ -47,10 +54,10 @@ class PhotoGalleryBlockImageTest extends SapphireTest
      */
     public function testCanDelete()
     {
-        $object = $this->objFromFixture('PhotoGalleryBlockImage', 'one');
-        $admin = $this->objFromFixture('Member', 'admin');
+        $object = $this->objFromFixture(PhotoGalleryBlockImage::class, 'one');
+        $admin = $this->objFromFixture(Member::class, 'admin');
         $this->assertTrue($object->canDelete($admin));
-        $member = $this->objFromFixture('Member', 'default');
+        $member = $this->objFromFixture(Member::class, 'default');
         $this->assertTrue($object->canDelete($member));
     }
 
@@ -59,10 +66,10 @@ class PhotoGalleryBlockImageTest extends SapphireTest
      */
     public function testCanCreate()
     {
-        $object = $this->objFromFixture('PhotoGalleryBlockImage', 'one');
-        $admin = $this->objFromFixture('Member', 'admin');
+        $object = $this->objFromFixture(PhotoGalleryBlockImage::class, 'one');
+        $admin = $this->objFromFixture(Member::class, 'admin');
         $this->assertTrue($object->canCreate($admin));
-        $member = $this->objFromFixture('Member', 'default');
+        $member = $this->objFromFixture(Member::class, 'default');
         $this->assertTrue($object->canCreate($member));
     }
 }

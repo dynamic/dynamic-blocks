@@ -1,5 +1,9 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Task;
+
+use SilverStripe\Dev\BuildTask;
+
 /**
  * Class BlocksVersionedObjectsTask
  */

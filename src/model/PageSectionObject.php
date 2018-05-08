@@ -1,11 +1,20 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Model;
+
+use Dynamic\DynamicBlocks\Block\PageSectionBlock;
+use SilverStripe\Assets\Image;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\FieldType\DBHTMLText;
+use SilverStripe\ORM\ValidationResult;
+
 /**
  * Class PageSectionObject
  *
  * @property string $Name
  * @property string $Title
- * @property HTMLText $Content
+ * @property DBHTMLText $Content
  * @property int $SortOrder
  * @property int $ImageID
  * @property int $PageSectionBlockID
@@ -36,10 +45,15 @@ class PageSectionObject extends DataObject
      * @var array
      */
     private static $has_one = array(
-        'Image' => 'Image',
-        'PageSectionBlock' => 'PageSectionBlock',
-        'BlockLink' => 'Link',
+        'Image' => Image::class,
+        'PageSectionBlock' => PageSectionBlock::class,
+        //'BlockLink' => 'Link', // todo readd once Linkable is SS4 compatable
     );
+
+    /**
+     * @var string
+     */
+    private static $table_name = 'PageSectionObject';
 
     /**
      * @var string
@@ -63,21 +77,20 @@ class PageSectionObject extends DataObject
         'Title' => 'Title',
     );
 
-    private static $extensions = [
-        'VersionedDataObject'
-    ];
-
     /**
      * @return FieldList
      */
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function ($fields) {
+
+            /* // todo readd once Linkable is SS4 compatable
             $fields->addFieldToTab(
                 'Root.Main',
                 LinkField::create('BlockLinkID', 'Link'),
                 'Content'
             );
+            */
         });
 
         $fields = parent::getCMSFields();
@@ -104,7 +117,7 @@ class PageSectionObject extends DataObject
         $result = parent::validate();
 
         if (!$this->Name) {
-            $result->error('Name is requied before you can save');
+            $result->addError('Name is requied before you can save');
         }
 
         return $result;
@@ -120,7 +133,7 @@ class PageSectionObject extends DataObject
      *
      * @return bool
      */
-    public function canCreate($member = null)
+    public function canCreate($member = null, $context = [])
     {
         return true;
     }
@@ -130,7 +143,7 @@ class PageSectionObject extends DataObject
      *
      * @return bool
      */
-    public function canView($member = null)
+    public function canView($member = null, $context = [])
     {
         return true;
     }
@@ -140,7 +153,7 @@ class PageSectionObject extends DataObject
      *
      * @return bool
      */
-    public function canEdit($member = null)
+    public function canEdit($member = null, $context = [])
     {
         return true;
     }
@@ -150,7 +163,7 @@ class PageSectionObject extends DataObject
      *
      * @return bool
      */
-    public function canDelete($member = null)
+    public function canDelete($member = null, $context = [])
     {
         return true;
     }

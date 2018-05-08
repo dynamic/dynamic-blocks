@@ -1,12 +1,18 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\ORM;
+
+use Dynamic\DynamicBlocks\Block\SlideshowBlock;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\ORM\DataExtension;
+
 class DynamicBlocksSlideImageDataExtension extends DataExtension
 {
     /**
      * @var array
      */
     private static $has_one = array(
-        'SlideshowBlock' => 'SlideshowBlock',
+        'SlideshowBlock' => SlideshowBlock::class,
     );
 
     /**

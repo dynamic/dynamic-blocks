@@ -1,5 +1,11 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Model;
+
+use Dynamic\DynamicBlocks\Block\PhotoGalleryBlock;
+use SilverStripe\Assets\Image;
+use SilverStripe\ORM\DataObject;
+
 class PhotoGalleryBlockImage extends DataObject
 {
     /**
@@ -25,9 +31,14 @@ class PhotoGalleryBlockImage extends DataObject
      * @var array
      */
     private static $has_one = array(
-        'PhotoGallery' => 'PhotoGalleryBlock',
-        'Image' => 'Image',
+        'PhotoGallery' => PhotoGalleryBlock::class,
+        'Image' => Image::class,
     );
+
+    /**
+     * @var string
+     */
+    private static $table_name = 'PhotoGalleryBlockImage';
 
     /**
      * @var array
@@ -46,14 +57,7 @@ class PhotoGalleryBlockImage extends DataObject
     );
 
     /**
-     * @var array
-     */
-    private static $extensions = [
-        'VersionedDataObject'
-    ];
-
-    /**
-     * @return FieldList
+     * @return \SilverStripe\Forms\FieldList
      */
     public function getCMSFields()
     {
@@ -64,7 +68,9 @@ class PhotoGalleryBlockImage extends DataObject
             'PhotoGalleryID',
         ));
 
-        $image = $fields->dataFieldByName('Image')->setFolderName('Uploads/Blocks/PhotoGallery/');
+        $image = $fields->dataFieldByName('Image')
+        //    ->setFolderName('Uploads/Blocks/PhotoGallery/')
+        ;
         $fields->insertBefore($image, 'Content');
 
         return $fields;
@@ -75,7 +81,7 @@ class PhotoGalleryBlockImage extends DataObject
      *
      * @return bool
      */
-    public function canCreate($member = null)
+    public function canCreate($member = null, $context = [])
     {
         return true;
     }
@@ -85,7 +91,7 @@ class PhotoGalleryBlockImage extends DataObject
      *
      * @return bool
      */
-    public function canView($member = null)
+    public function canView($member = null, $context = [])
     {
         return true;
     }
@@ -95,7 +101,7 @@ class PhotoGalleryBlockImage extends DataObject
      *
      * @return bool
      */
-    public function canEdit($member = null)
+    public function canEdit($member = null, $context = [])
     {
         return true;
     }
@@ -105,7 +111,7 @@ class PhotoGalleryBlockImage extends DataObject
      *
      * @return bool
      */
-    public function canDelete($member = null)
+    public function canDelete($member = null, $context = [])
     {
         return true;
     }

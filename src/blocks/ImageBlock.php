@@ -1,5 +1,10 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Block;
+
+use SheaDawson\Blocks\Model\Block;
+use SilverStripe\Assets\Image;
+
 class ImageBlock extends Block
 {
     /**
@@ -22,11 +27,16 @@ class ImageBlock extends Block
      * @var array
      */
     private static $has_one = array(
-        'Image' => 'Image',
+        'Image' => Image::class,
     );
 
     /**
-     * @return FieldList
+     * @var string
+     */
+    private static $table_name = 'ImageBlock';
+
+    /**
+     * @return \SilverStripe\Forms\FieldList
      */
     public function getCMSFields()
     {

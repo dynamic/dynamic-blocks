@@ -1,4 +1,9 @@
-1`<?php
+<?php
+
+namespace Dynamic\DynamicBlocks\Test;
+
+use Dynamic\DynamicBlocks\Block\SlideshowBlock;
+use SilverStripe\Dev\SapphireTest;
 
 class SlideshowBlockTest extends SapphireTest
 {
@@ -12,7 +17,7 @@ class SlideshowBlockTest extends SapphireTest
      */
     public function testGetPluralName()
     {
-        $object = singleton('SlideshowBlock');
+        $object = singleton(SlideshowBlock::class);
         $this->assertEquals('Slideshow Blocks', $object->plural_name());
     }
 }

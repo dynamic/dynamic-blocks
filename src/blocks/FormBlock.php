@@ -1,6 +1,13 @@
 <?php
 
-if (!class_exists('UserDefinedForm')) {
+namespace Dynamic\DynamicBlocks\Block;
+
+use SheaDawson\Blocks\Model\Block;
+use SilverStripe\Control\Controller;
+use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+
+if (!class_exists(UserDefinedForm::class)) {
     return;
 }
 
@@ -31,11 +38,16 @@ class FormBlock extends Block
     );
 
     /**
+     * @var string
+     */
+    private static $table_name = 'FormBlock';
+
+    /**
      * @return FieldList
      */
     public function getCMSFields()
     {
-        $fields = singleton('Block')->getCMSFields();
+        $fields = singleton(Block::class)->getCMSFields();
 
         if (class_exists('UserDefinedForm')) {
             $fields->addFieldToTab('Root.Main', DropdownField::create(
@@ -47,7 +59,7 @@ class FormBlock extends Block
             );
         }
 
-        $fields->addFieldToTab('Root.Main', HtmlEditorField::create('Content'));
+        $fields->addFieldToTab('Root.Main', HTMLEditorField::create('Content'));
 
         return $fields;
     }
@@ -70,9 +82,10 @@ class FormBlock extends Block
 
     /**
      * @param null $member
+     * @param array $context
      * @return bool
      */
-    public function canCreate($member = null)
+    public function canCreate($member = NULL, $context = [])
     {
         if (!class_exists('UserDefinedForm')) {
             return false;
@@ -82,9 +95,10 @@ class FormBlock extends Block
 
     /**
      * @param null $member
+     * @param array $context
      * @return bool
      */
-    public function canView($member = null)
+    public function canView($member = NULL, $context = [])
     {
         if (!class_exists('UserDefinedForm')) {
             return false;

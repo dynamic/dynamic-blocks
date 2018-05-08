@@ -1,5 +1,12 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Test;
+
+use Dynamic\DynamicBlocks\Block\FormBlock;
+use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Security\Member;
+
 class FormBlockTest extends SapphireTest
 {
     /**
@@ -12,7 +19,7 @@ class FormBlockTest extends SapphireTest
      */
     public function testGetPluralName()
     {
-        $object = singleton('FormBlock');
+        $object = singleton(FormBlock::class);
         $this->assertEquals('Form Blocks', $object->plural_name());
     }
 
@@ -21,9 +28,9 @@ class FormBlockTest extends SapphireTest
      */
     public function testGetCMSFields()
     {
-        $object = $this->objFromFixture('FormBlock', 'one');
+        $object = $this->objFromFixture(FormBlock::class, 'one');
         $fields = $object->getCMSFields();
-        $this->assertInstanceOf('FieldList', $fields);
+        $this->assertInstanceOf(FieldList::class, $fields);
     }
 
     /**
@@ -32,7 +39,7 @@ class FormBlockTest extends SapphireTest
     public function testBlockForm()
     {
         if (class_exists('UserDefinedForm')) {
-            $object = $this->objFromFixture('FormBlock', 'one');
+            $object = $this->objFromFixture(FormBlock::class, 'one');
             $form = $object->Form();
             $this->assertInstanceOf('UserDefinedForm', $form);
         }
@@ -43,9 +50,9 @@ class FormBlockTest extends SapphireTest
      */
     public function testCanView()
     {
-        $object = $this->objFromFixture('FormBlock', 'one');
-        $admin = $this->objFromFixture('Member', 'admin');
-        $member = $this->objFromFixture('Member', 'default');
+        $object = $this->objFromFixture(FormBlock::class, 'one');
+        $admin = $this->objFromFixture(Member::class, 'admin');
+        $member = $this->objFromFixture(Member::class, 'default');
         if (class_exists('UserDefinedForm')) {
             $this->assertTrue($object->canView($admin));
             $this->assertTrue($object->canView($member));
@@ -60,9 +67,9 @@ class FormBlockTest extends SapphireTest
      */
     public function testCanCreate()
     {
-        $object = $this->objFromFixture('FormBlock', 'one');
-        $admin = $this->objFromFixture('Member', 'admin');
-        $member = $this->objFromFixture('Member', 'default');
+        $object = $this->objFromFixture(FormBlock::class, 'one');
+        $admin = $this->objFromFixture(Member::class, 'admin');
+        $member = $this->objFromFixture(Member::class, 'default');
         if (class_exists('UserDefinedForm')) {
             $this->assertTrue($object->canCreate($admin));
             $this->assertTrue($object->canCreate($member));

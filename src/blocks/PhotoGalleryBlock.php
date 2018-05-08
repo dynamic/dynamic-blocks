@@ -1,5 +1,16 @@
 <?php
 
+namespace Dynamic\DynamicBlocks\Block;
+
+use Dynamic\DynamicBlocks\Model\PhotoGalleryBlockImage;
+use SheaDawson\Blocks\Controllers\BlockController;
+use SheaDawson\Blocks\Model\Block;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+use SilverStripe\Forms\GridField\GridFieldDeleteAction;
+use SilverStripe\View\Requirements;
+use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
+
 class PhotoGalleryBlock extends Block
 {
     /**
@@ -22,11 +33,16 @@ class PhotoGalleryBlock extends Block
      * @var array
      */
     private static $has_many = array(
-        'Images' => 'PhotoGalleryBlockImage'
+        'Images' => PhotoGalleryBlockImage::class
     );
 
     /**
-     * @return FieldList
+     * @var string
+     */
+    private static $table_name = 'PhotoGalleryBlock';
+
+    /**
+     * @return \SilverStripe\Forms\FieldList
      */
     public function getCMSFields()
     {
@@ -49,17 +65,5 @@ class PhotoGalleryBlock extends Block
         }
 
         return $fields;
-    }
-}
-
-class PhotoGalleryBlock_Controller extends Block_Controller
-{
-    /**
-     *
-     */
-    public function init()
-    {
-        Requirements::css('dynamic-blocks/thirdparty/lightbox/lightbox.css');
-        Requirements::javascript('dynamic-blocks/thirdparty/lightbox/lightbox.min.js');
     }
 }

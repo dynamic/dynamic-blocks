@@ -1,0 +1,14 @@
+<phpunit bootstrap="framework/tests/bootstrap.php" colors="true">
+    <testsuite name="dynamic-blocks">
+        <directory>dynamic-blocks/tests</directory>
+    </testsuite>
+
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">dynamic-blocks/code/</directory>
+            <exclude>
+                <directory suffix=".php">dynamic-blocks/tests/</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>
