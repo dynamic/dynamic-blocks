@@ -3,6 +3,7 @@
 namespace Dynamic\DynamicBlocks\Model;
 
 use Dynamic\DynamicBlocks\Block\AccordionBlock;
+use Sheadawson\Linkable\Models\Link;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
 use SilverStripe\ORM\DataObject;
@@ -39,13 +40,13 @@ class AccordionPanel extends DataObject
     private static $has_one = array(
         'Accordion' => AccordionBlock::class,
         'Image' => Image::class,
-        //'BlockLink' => 'Link', // todo readd once Linkable is SS4 compatible
+        'BlockLink' => Link::class,
     );
 
     /**
      * @var string
      */
-    private static $table_name = 'AccordionPanel';
+    private static $table_name = 'AccordionPanel_block';
 
     /**
      * @var string

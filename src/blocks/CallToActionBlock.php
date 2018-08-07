@@ -3,6 +3,9 @@
 namespace Dynamic\DynamicBlocks\Block;
 
 use SheaDawson\Blocks\Model\Block;
+use Sheadawson\Linkable\Forms\LinkField;
+use Sheadawson\Linkable\Models\Link;
+use SilverStripe\Forms\FieldList;
 
 class CallToActionBlock extends Block
 {
@@ -26,7 +29,7 @@ class CallToActionBlock extends Block
      * @var array
      */
     private static $has_one = [
-        //'BlockLink' => 'Link', // todo readd once Linkable is SS4 compatible
+        'BlockLink' => Link::class,
     ];
 
     /**
@@ -39,14 +42,11 @@ class CallToActionBlock extends Block
      */
     public function getCMSFields()
     {
-        $this->beforeUpdateCMSFields(function ($fields) {
-
-            /* // todo readd once Linkable is SS4 compatible
+        $this->beforeUpdateCMSFields(function (FieldList $fields) {
             $fields->addFieldToTab(
                 'Root.Main',
                 LinkField::create('BlockLinkID', 'Link')
             );
-            */
         });
 
         $fields = parent::getCMSFields();
