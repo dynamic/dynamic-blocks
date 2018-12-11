@@ -22,3 +22,5 @@ SilverStripe\ORM\DatabaseAdmin:
     AccordionPanel: Dynamic\DynamicBlocks\Model\AccordionPanel
     PageSectionObject: Dynamic\DynamicBlocks\Model\PageSectionObject
     PhotoGalleryBlockImage: Dynamic\DynamicBlocks\Model\PhotoGalleryBlockImage
+    Block: SheaDawson\Blocks\Model\Block
+    BlockSet: SheaDawson\Blocks\Model\BlockSet
