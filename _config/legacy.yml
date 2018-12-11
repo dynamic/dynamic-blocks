@@ -1,0 +1,19 @@
+---
+Name: dynamic-blocks-legacy
+---
+SilverStripe\ORM\DatabaseAdmin:
+  classname_value_remapping:
+    AccordionBlock: Dynamic\DynamicBlocks\Block\AccordionBlock
+    CallToActionBlock: Dynamic\DynamicBlocks\Block\CallToActionBlock
+    ChildPagesBlock: Dynamic\DynamicBlocks\Block\ChildPagesBlock
+    CustomerServiceBlock: Dynamic\DynamicBlocks\Block\CustomerServiceBlock
+    EmailSignupBlock: Dynamic\DynamicBlocks\Block\EmailSignupBlock
+    EmbedBlock: Dynamic\DynamicBlocks\Block\EmbedBlock
+    EmbedCodeBlock: Dynamic\DynamicBlocks\Block\EmbedCodeBlock
+    FormBlock: Dynamic\DynamicBlocks\Block\FormBlock
+    ImageBlock: Dynamic\DynamicBlocks\Block\ImageBlock
+    PageSectionBlock: Dynamic\DynamicBlocks\Block\PageSectionBlock
+    PhotoGalleryBlock: Dynamic\DynamicBlocks\Block\PhotoGalleryBlock
+    PromoBlock: Dynamic\DynamicBlocks\Block\PromoBlock
+    RecentBlogPostsBlock: Dynamic\DynamicBlocks\Block\RecentBlogPostsBlock
+    SlideshowBlock: Dynamic\DynamicBlocks\Block\SlideshowBlock
