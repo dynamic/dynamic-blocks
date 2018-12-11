@@ -17,3 +17,8 @@ SilverStripe\ORM\DatabaseAdmin:
     PromoBlock: Dynamic\DynamicBlocks\Block\PromoBlock
     RecentBlogPostsBlock: Dynamic\DynamicBlocks\Block\RecentBlogPostsBlock
     SlideshowBlock: Dynamic\DynamicBlocks\Block\SlideshowBlock
+    ContentBlock: SheaDawson\Blocks\Model\ContentBlock
+    PromoObject: Dynamic\DynamicBlocks\Model\PromoObject
+    AccordionPanel: Dynamic\DynamicBlocks\Model\AccordionPanel
+    PageSectionObject: Dynamic\DynamicBlocks\Model\PageSectionObject
+    PhotoGalleryBlockImage: Dynamic\DynamicBlocks\Model\PhotoGalleryBlockImage
