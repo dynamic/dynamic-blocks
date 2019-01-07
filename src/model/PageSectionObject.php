@@ -3,6 +3,7 @@
 namespace Dynamic\DynamicBlocks\Model;
 
 use Dynamic\DynamicBlocks\Block\PageSectionBlock;
+use Sheadawson\Linkable\Models\Link;
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataObject;
@@ -47,7 +48,7 @@ class PageSectionObject extends DataObject
     private static $has_one = array(
         'Image' => Image::class,
         'PageSectionBlock' => PageSectionBlock::class,
-        //'BlockLink' => 'Link', // todo readd once Linkable is SS4 compatable
+        'BlockLink' => Link::class,
     );
 
     /**
