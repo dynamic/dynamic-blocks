@@ -21,6 +21,7 @@ class CustomerServiceBlockTest extends SapphireTest
      */
     public function testGetCMSFields()
     {
+        $this->skipTest = true;
         $object = $this->objFromFixture('CustomerServiceBlock', 'one');
         $fields = $object->getCMSFields();
         $this->assertInstanceOf('FieldList', $fields);
