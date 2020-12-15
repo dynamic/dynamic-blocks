@@ -1,6 +1,10 @@
 
 language: php
 
+services:
+  - mysql
+  - postgresql
+
 sudo: false
 
 addons:
