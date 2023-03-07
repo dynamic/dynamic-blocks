@@ -3,6 +3,8 @@
 namespace Dynamic\DynamicBlocks\Model;
 
 use Dynamic\DynamicBlocks\Block\PromoBlock;
+use Sheadawson\Linkable\Forms\LinkField;
+use Sheadawson\Linkable\Models\Link;
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordViewer;
@@ -34,7 +36,7 @@ class PromoObject extends DataObject
      */
     private static $has_one = array(
         'Image' => Image::class,
-        //'BlockLink' => 'Link', // todo readd once Linkable is SS4 compatible
+        'BlockLink' => Link::class,
     );
 
     /**
@@ -78,13 +80,11 @@ class PromoObject extends DataObject
     {
         $this->beforeUpdateCMSFields(function ($fields) {
 
-            /* // todo readd once Linkable is SS4 compatible
             $fields->addFieldToTab(
                 'Root.Main',
                 LinkField::create('BlockLinkID', 'Link'),
                 'Content'
             );
-            */
         });
 
         $fields = parent::getCMSFields();

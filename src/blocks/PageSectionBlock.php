@@ -5,8 +5,10 @@ namespace Dynamic\DynamicBlocks\Block;
 use Dynamic\DynamicBlocks\Model\PageSectionObject;
 use SheaDawson\Blocks\Model\Block;
 use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
+use SilverStripe\Forms\GridField\GridFieldFilterHeader;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
 /**
@@ -55,8 +57,9 @@ class PageSectionBlock extends Block
             // Sections
             $config = GridFieldConfig_RecordEditor::create();
             $config->addComponent(new GridFieldOrderableRows('SortOrder'));
-            $config->removeComponentsByType('GridFieldAddExistingAutocompleter');
-            $config->removeComponentsByType('GridFieldDeleteAction');
+            $config->removeComponentsByType(GridFieldAddExistingAutocompleter::class);
+            $config->removeComponentsByType(GridFieldDeleteAction::class);
+            $config->removeComponentsByType(GridFieldFilterHeader::class);
             $config->addComponent(new GridFieldDeleteAction(false));
             $sectionsField = GridField::create('Sections', 'Sections', $this->Sections()->sort('SortOrder'), $config);
             $fields->addFieldsToTab('Root.Sections', array(

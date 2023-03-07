@@ -24,7 +24,7 @@
     "silverstripe/framework": "^4.0",
     "dynamic/flexslider": "^3.0",
     "sheadawson/silverstripe-blocks": "^2.0",
-    "dynamic/silverstripe-linkable": "dev-embedUpdate",
+    "dynamic/silverstripe-linkable": "^1.0",
     "symbiote/silverstripe-gridfieldextensions": "^3.0",
     "dynamic/silverstripe-geocoder": "^1.0"
   },

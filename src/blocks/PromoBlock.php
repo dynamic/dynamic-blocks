@@ -5,7 +5,11 @@ namespace Dynamic\DynamicBlocks\Block;
 use Dynamic\DynamicBlocks\Model\PromoObject;
 use SheaDawson\Blocks\Model\Block;
 use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
 use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
+use SilverStripe\Forms\GridField\GridFieldDeleteAction;
+use SilverStripe\Forms\GridField\GridFieldFilterHeader;
+use SilverStripe\Versioned\GridFieldArchiveAction;
 use Symbiote\GridFieldExtensions\GridFieldAddExistingSearchButton;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
@@ -55,19 +59,22 @@ class PromoBlock extends Block
     {
         $fields = parent::getCMSFields();
 
-        $fields->removeByName(array(
-            'Promos',
-        ));
-
         if ($this->ID) {
-            $config = GridFieldConfig_RelationEditor::create();
-            $config->addComponent(new GridFieldOrderableRows('SortOrder'));
-            $config->removeComponentsByType('GridFieldAddExistingAutocompleter');
-            $config->addComponent(new GridFieldAddExistingSearchButton());
-            $promos = $this->Promos()->sort('SortOrder');
-            $promoField = GridField::create('Promos', 'Promos', $promos, $config);
+            /** @var \SilverStripe\Forms\GridField\GridField $promoField */
+            $promoField = $fields->dataFieldByName('Promos');
+            $fields->removeByName('Promos');
+            $config = $promoField->getConfig();
+            $config->removeComponentsByType([
+                GridFieldAddExistingAutocompleter::class,
+                GridFieldDeleteAction::class,
+                GridFieldArchiveAction::class,
+                GridFieldFilterHeader::class,
+            ])->addComponents(
+                new GridFieldOrderableRows('SortOrder'),
+                new GridFieldAddExistingSearchButton()
+            );
 
-            $fields->addFieldsToTab('Root.Promos', array(
+            $fields->addFieldsToTab('Root.Main', array(
                 $promoField,
             ));
         }

@@ -2,6 +2,10 @@
 
 namespace Dynamic\DynamicBlocks\Task;
 
+use Dynamic\DynamicBlocks\Model\AccordionPanel;
+use Dynamic\DynamicBlocks\Model\PageSectionObject;
+use Dynamic\DynamicBlocks\Model\PhotoGalleryBlockImage;
+use Dynamic\DynamicBlocks\Model\PromoObject;
 use SilverStripe\Dev\BuildTask;
 
 /**
@@ -39,10 +43,10 @@ class BlocksVersionedObjectsTask extends BuildTask
     public function updateObjects()
     {
         $objects = [
-            'AccordionPanel',
-            'PageSectionObject',
-            'PhotoGalleryBlockImage',
-            'PromoObject',
+            AccordionPanel::class,
+            PageSectionObject::class,
+            PhotoGalleryBlockImage::class,
+            PromoObject::class
         ];
         $ct = 0;
         foreach ($objects as $object) {
