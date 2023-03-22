@@ -46,24 +46,24 @@ class PhotoGalleryBlock extends Block
      */
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
+        $this->beforeUpdateCMSFields(function ($fields) {
+            $fields->removeByName([
+                'Images',
+            ]);
+    
+            if ($this->ID) {
+                $config = GridFieldConfig_RecordEditor::create();
+                $config->addComponent(new GridFieldOrderableRows('SortOrder'));
+                $config->removeComponentsByType('GridFieldAddExistingAutocompleter');
+                $config->removeComponentsByType('GridFieldDeleteAction');
+                $config->addComponent(new GridFieldDeleteAction(false));
+                $imagesField = GridField::create('Images', 'Images', $this->Images()->sort('SortOrder'), $config);
+    
+                $fields->addFieldToTab('Root.Main', $imagesField);
+    
+            }
+        });
 
-        $fields->removeByName([
-            'Images',
-        ]);
-
-        if ($this->owner->ID) {
-            $config = GridFieldConfig_RecordEditor::create();
-            $config->addComponent(new GridFieldOrderableRows('SortOrder'));
-            $config->removeComponentsByType('GridFieldAddExistingAutocompleter');
-            $config->removeComponentsByType('GridFieldDeleteAction');
-            $config->addComponent(new GridFieldDeleteAction(false));
-            $imagesField = GridField::create('Images', 'Images', $this->Images()->sort('SortOrder'), $config);
-
-            $fields->addFieldToTab('Root.Photos', $imagesField);
-
-        }
-
-        return $fields;
+        return $fields= parent::getCMSFields();;
     }
 }

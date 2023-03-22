@@ -62,7 +62,7 @@ class PageSectionBlock extends Block
             $config->removeComponentsByType(GridFieldFilterHeader::class);
             $config->addComponent(new GridFieldDeleteAction(false));
             $sectionsField = GridField::create('Sections', 'Sections', $this->Sections()->sort('SortOrder'), $config);
-            $fields->addFieldsToTab('Root.Sections', array(
+            $fields->addFieldsToTab('Root.Main', array(
                 $sectionsField,
             ));
         }
