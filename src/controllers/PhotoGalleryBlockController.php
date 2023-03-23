@@ -16,7 +16,7 @@ class PhotoGalleryBlock_Controller extends BlockController
      */
     public function init()
     {
-        Requirements::css('dynamic-blocks/thirdparty/lightbox/lightbox.css');
-        Requirements::javascript('dynamic-blocks/thirdparty/lightbox/lightbox.min.js');
+        Requirements::css('dynamic/dynamic-blocks:thirdparty/lightbox/lightbox.css');
+        Requirements::javascript('dynamic/dynamic-blocks:thirdparty/lightbox/lightbox.min.js');
     }
 }
