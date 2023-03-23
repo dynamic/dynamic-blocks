@@ -2,8 +2,10 @@
 
 namespace Dynamic\DynamicBlocks\Block;
 
+use Dynamic\DynamicBlocks\Controller\AccordionBlockController;
 use Dynamic\DynamicBlocks\Model\AccordionPanel;
 use SheaDawson\Blocks\Model\Block;
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
@@ -87,5 +89,16 @@ class AccordionBlock extends Block
             return $this->Panels()->sort('Sort');
         }
         return $this->Panels();
+    }
+
+    /**
+     * @return mixed|object|\SheaDawson\Blocks\Model\BlockController|Injector
+     */
+    public function getController()
+    {
+        $controller = Injector::inst()->create(AccordionBlockController::class, $this);
+        $controller->init();
+
+        return $controller;
     }
 }

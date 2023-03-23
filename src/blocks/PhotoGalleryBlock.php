@@ -2,9 +2,11 @@
 
 namespace Dynamic\DynamicBlocks\Block;
 
+use Dynamic\DynamicBlocks\Controller\PhotoGalleryBlock_Controller;
 use Dynamic\DynamicBlocks\Model\PhotoGalleryBlockImage;
 use SheaDawson\Blocks\Controllers\BlockController;
 use SheaDawson\Blocks\Model\Block;
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
@@ -32,9 +34,9 @@ class PhotoGalleryBlock extends Block
     /**
      * @var array
      */
-    private static $has_many = array(
-        'Images' => PhotoGalleryBlockImage::class
-    );
+    private static $has_many = [
+        'Images' => PhotoGalleryBlockImage::class,
+    ];
 
     /**
      * @var string
@@ -50,7 +52,7 @@ class PhotoGalleryBlock extends Block
             $fields->removeByName([
                 'Images',
             ]);
-    
+
             if ($this->ID) {
                 $config = GridFieldConfig_RecordEditor::create();
                 $config->addComponent(new GridFieldOrderableRows('SortOrder'));
@@ -58,12 +60,23 @@ class PhotoGalleryBlock extends Block
                 $config->removeComponentsByType('GridFieldDeleteAction');
                 $config->addComponent(new GridFieldDeleteAction(false));
                 $imagesField = GridField::create('Images', 'Images', $this->Images()->sort('SortOrder'), $config);
-    
+
                 $fields->addFieldToTab('Root.Main', $imagesField);
-    
+
             }
         });
 
-        return $fields= parent::getCMSFields();;
+        return $fields = parent::getCMSFields();;
+    }
+
+    /**
+     * @return mixed|object|\SheaDawson\Blocks\Model\BlockController|Injector
+     */
+    public function getController()
+    {
+        $controller = Injector::inst()->create(PhotoGalleryBlock_Controller::class, $this);
+        $controller->init();
+
+        return $controller;
     }
 }
