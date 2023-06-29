@@ -27,7 +27,6 @@ class CustomerServiceBlock extends Block
      * @var array
      */
     private static $db = array(
-        'Title' => 'Varchar(255)',
         'Website' => 'Varchar(255)',
         'Phone' => 'Varchar(40)',
         'Email' => 'Varchar(255)',
@@ -50,7 +49,7 @@ class CustomerServiceBlock extends Block
         $this->beforeUpdateCMSFields(function ($fields) use ($self) {
             $fields->dataFieldByName('Title')
                 ->setTitle('Name');
-            
+
             if ($website = $fields->dataFieldByName('Website')) {
                 $website->setAttribute('placeholder', 'http://');
             }
