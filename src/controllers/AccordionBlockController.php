@@ -31,7 +31,7 @@ class AccordionBlockController extends BlockController
                     collapsible: true, heightStyle: "content"
                 });
             });
-        ');
+        ', 'DynamicAccordionBlock');
     }
 
     /**
@@ -39,6 +39,6 @@ class AccordionBlockController extends BlockController
      */
     public function AccordionClass()
     {
-        return Config::inst()->get('AccordionBlockController', 'accordion_class');
+        return Config::inst()->get(static::class, 'accordion_class');
     }
 }
