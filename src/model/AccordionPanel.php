@@ -3,6 +3,7 @@
 namespace Dynamic\DynamicBlocks\Model;
 
 use Dynamic\DynamicBlocks\Block\AccordionBlock;
+use Sheadawson\Linkable\Forms\LinkField;
 use Sheadawson\Linkable\Models\Link;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
