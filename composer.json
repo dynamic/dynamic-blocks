@@ -29,7 +29,7 @@
     "dynamic/silverstripe-geocoder": "^1.0"
   },
   "require-dev": {
-    "phpunit/PHPUnit": "^5.7"
+    "phpunit/phpunit": "^5.7"
   },
   "config": {
     "process-timeout": 600
